@@ -1,0 +1,392 @@
+[
+  {
+    "university": "Indian Institute of Technology Bombay",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "course-level",
+    "policy_url": "https://www.cse.iitb.ac.in/~shivaram/teaching/cs748-s2026/index.html",
+    "policy_title": "CS 748: Advances in Intelligent and Learning Agents (Spring 2026)",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "Students must not consult LLMs in any manner while preparing their responses. The exercise is meant to hone their own skills at assimilating and communicating; any external shortcuts negates the sanctity of this exercise.",
+        "ctrl_f_phrase": "Students must not consult LLMs in any manner"
+      },
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "In general, LLMs must not be used in any form for preparing any written submission for the course (that is, responses to readings, project proposal, mid-stage report, and final report).",
+        "ctrl_f_phrase": "LLMs must not be used in any form"
+      },
+      {
+        "topic_hint": "research",
+        "verbatim_text": "On the other hand, the students are free to use LLMs for coding or any other aspect of their research while working on their course project.",
+        "ctrl_f_phrase": "free to use LLMs for coding or any other aspect of their research"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "They should declare this usage in their written submissions.",
+        "ctrl_f_phrase": "declare this usage in their written"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "Students are expected to adhere to the highest standards of integrity and academic honesty. Academic violations, as detailed below, will be dealt with strictly, in accordance with the institute's procedures and disciplinary actions for academic malpractice.",
+        "ctrl_f_phrase": "highest standards of integrity"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Technology Delhi",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.hps.cam.ac.uk/policy",  
+    "policy_title": "On the use of Generative AI at IIT Delhi",
+    "policy_last_updated": "October 30, 2024",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "it is recommended that each course instructor develop a plagiarism policy under the updated curriculum.",
+        "ctrl_f_phrase": "course instructor develop a plagiarism policy"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "Any work or content generated with the assistance of GenAI tools be fully disclosed to ensure transparency and maintain academic integrity. Specifically, if GenAI tools are used to create distinct elements—such as images, tables, data visualizations, or significant sections of text—this use should be noted as such.",
+        "ctrl_f_phrase": "fully disclosed to ensure transparency"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "This policy should address the ethical use of GenAI tools, with clear guidelines that discourage indiscriminate or unethical applications without penalizing transparency. The aim is to create a framework where students feel encouraged to disclose their use of AI tools fully and take ownership of their submissions.",
+        "ctrl_f_phrase": "ethical use of GenAI tools"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "Such a policy should establish differentiated consequences for misuse of AI, such as submitting AI-generated work without any personal input or understanding. At the same time, it should reward honest, responsible engagement with AI tools.",
+        "ctrl_f_phrase": "differentiated consequences for misuse of AI"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Technology Madras",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide AI policy or AI-specific academic integrity guidelines found on IIT Madras website or news sources between 2024-2026. Searches on the IIT Madras site and external sources did not reveal any specific policy documents or statements on AI tool usage.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Indian Institute of Science Bengaluru",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf",
+    "policy_title": "Student Information Handbook 2024-25 (Academic Integrity section)",
+    "policy_last_updated": null,
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "Write clearly in your own words, show the workings, cite sources. AI tools may be used freely, without acknowledgement, for word-processing tasks such as improving grammar, punctuation, clarity, etc.",
+        "ctrl_f_phrase": "AI tools may be used freely, without acknowledgement"
+      },
+      {
+        "topic_hint": "general",
+        "verbatim_text": "Any student who uses AI tools must do so within the permitted framework. Further, the student is wholly responsible for the correctness of the content generated by such tools.",
+        "ctrl_f_phrase": "within the permitted framework"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "Course Instructors should clearly specify, at the beginning of the course, specific policies governing the use of AI tools for the course's sessional works and final works that will be assessed.",
+        "ctrl_f_phrase": "specific policies governing the use of AI tools"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Management Ahmedabad",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No AI-specific policy or guideline found on IIM Ahmedabad website or in official sources from 2024-2026. Public references indicate IIMA integrates AI in curriculum, but no formal AI usage policy for students was found.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "University of Delhi",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide AI or Generative AI policy found for Delhi University. Academic integrity guidelines and announcements found do not mention AI usage rules.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Jadavpur University",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No AI-specific academic policy or guideline found for Jadavpur University. Searches of university resources and news did not yield any official AI use policy.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Birla Institute of Technology and Science Pilani",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No publicly available AI usage policy for BITS Pilani was found. The university site and related sources did not list an AI-specific policy between 2024 and 2026.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Manipal Institute of Technology (MAHE)",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No specific AI policy for students found. MAHE announced an OpenAI partnership and general AI guidelines, but no formal student AI usage policy was located on official sites.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Ashoka University",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No mention of AI tools in the official Academic Integrity Policy or related statements. No Ashoka-specific AI usage guidelines were found for 2024-2026.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Massachusetts Institute of Technology",
+    "country": "USA",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://ist.mit.edu/ai-guidance",
+    "policy_title": "Guidance for use of Generative AI tools",
+    "policy_last_updated": "February 19, 2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "You should disclose the use of generative AI tools for all academic, educational, and research-related uses. Do not publish research results that rely on content generated through the use of a generative AI tool without disclosing the nature of the use of such generative AI tool in producing the content.",
+        "ctrl_f_phrase": "disclose the use of generative AI tools"
+      }
+    ]
+  },
+  {
+    "university": "Stanford University",
+    "country": "USA",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://news.stanford.edu/stories/2025/10/academic-integrity-working-group-generative-ai-exam-policies",
+    "policy_title": "Academic Integrity Working Group addresses generative AI and exam policies",
+    "policy_last_updated": "October 31, 2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "exams",
+        "verbatim_text": "For instructors who wish to limit students\u2019 use of AI in specific circumstances, including for high-stakes assessments, the group recommends in-person formats such as oral exams and in-class writing assignments.",
+        "ctrl_f_phrase": "recommend in-person formats such as oral exams"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "Departments and multi-section courses are encouraged to establish consistent and enforceable AI policies that can be applied fairly across sections. These policies should be reasonable, communicated clearly, and discussed with students regularly throughout the academic year.",
+        "ctrl_f_phrase": "establish consistent and enforceable AI policies"
+      }
+    ]
+  },
+  {
+    "university": "Harvard University",
+    "country": "USA",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "Harvard published guidance recommending transparency with AI use, but no specific policy excerpts were accessible. No direct institutional policy document on student AI use was found.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "University of Oxford",
+    "country": "UK",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools",
+    "policy_title": "Guidance on safe and responsible use of Gen AI tools",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "GenAI tools must be used responsibly and ethically, in accordance with the academic standards of rigour and integrity that are expected of you as a student at Oxford. You should always use AI tools with integrity, honesty, and transparency, and maintain a critical approach to using any output generated by these tools.",
+        "ctrl_f_phrase": "use AI tools with integrity, honesty, and transparency"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "For each specific assessment you will be given prior written notice of whether or not the use of AI is permitted. You are fully responsible for the accuracy, originality, and quality of work you submit for assessment, and you must follow the rules on AI use for each specific assessment you are taking. You must make a formal declaration of any permitted AI-use in the format prescribed by your assessment setter.",
+        "ctrl_f_phrase": "formal declaration of any permitted AI-use"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "Any unauthorised use of AI in work submitted for assessment constitutes cheating and plagiarism under University rules, penalties for which include failing the relevant assessment and, in appropriate cases, expulsion.",
+        "ctrl_f_phrase": "unauthorised use of AI in work submitted"
+      },
+      {
+        "topic_hint": "research",
+        "verbatim_text": "All research undertaken by academic staff and students, including by postgraduate students, must meet the expectations in the Policy for using Generative AI in Research: guidelines for researchers and professional staff. Substantive use of GenAI should be declared whenever a stand-alone AI tool is used.",
+        "ctrl_f_phrase": "All research undertaken by academic staff and students"
+      }
+    ]
+  },
+  {
+    "university": "University of Cambridge",
+    "country": "UK",
+    "policy_found": true,
+    "policy_scope": "department-level",
+    "policy_url": "https://www.hps.cam.ac.uk/students/academic-misconduct",
+    "policy_title": "Academic misconduct: plagiarism and use of AI",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "HPS prohibits students from presenting text, ideas and other material generated by AI tools as their own work (for any type of assessment, summative or formative).",
+        "ctrl_f_phrase": "generated by AI tools as their own work"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "HPS requires students to submit a cover sheet with any written take-home summative work confirming that you have read our policy, declaring that you have not used AI tools in impermissible ways, and declaring how (if at all) you have used AI tools in permissible ways.",
+        "ctrl_f_phrase": "cover sheet with any written take-home"
+      }
+    ]
+  },
+  {
+    "university": "ETH Zurich",
+    "country": "Switzerland",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "policy_title": "Academic Integrity",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "The use of generative AI should be made transparent at all times. Be explicit about which content or parts of materials and work have been created with the help of generative AI.",
+        "ctrl_f_phrase": "explicit about which content or parts"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "Lecturers are encouraged to establish rules and guidelines regarding the use of generative artificial intelligence for assignments, projects and assessments in their courses. There are no universally applicable solutions, so clear communication between lecturers and students is all the more important.",
+        "ctrl_f_phrase": "Lecturers are encouraged to establish rules and guidelines"
+      }
+    ]
+  },
+  {
+    "university": "National University of Singapore",
+    "country": "Singapore",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No publicly available campus-wide AI policy was found. An interim teaching/learning AI policy exists internally, but direct excerpts could not be sourced.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "University of Toronto",
+    "country": "Canada",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.academicintegrity.utoronto.ca/perils-and-pitfalls/using-chatgpt-or-other-ai-tool-on-a-marked-assessment/",
+    "policy_title": "Using ChatGPT or other generative AI tool on a marked assessment",
+    "policy_last_updated": "July 1, 2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "By failing to comply with the instructor\u2019s specific instructions that you not use generative AI tools in writing your term paper, you have knowingly used an unauthorized aid in preparing your assignment. Any student using an unauthorized aid has committed an offence under the University\u2019s Code of Behaviour on Academic Matters, and may be sanctioned accordingly.",
+        "ctrl_f_phrase": "unauthorized aid in preparing your assignment"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "Be aware that the University expects students to complete their own work, without any outside assistance from another person, tutor, or technology tool, unless otherwise specified by your instructor. If your instructor advised you that use of AI tools was prohibited, using a generative AI tool to create even part of your marked assignment would be considered use of an unauthorized aid.",
+        "ctrl_f_phrase": "complete their own work, without any outside assistance"
+      }
+    ]
+  },
+  {
+    "university": "University of Melbourne",
+    "country": "Australia",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence",
+    "policy_title": "Artificial intelligence",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "Subject coordinators are encouraged to carefully consider the potential for legitimate learning uses of GenAI tools in assessments, set rules and limits on usage with regard to the learning outcomes of the subject and clearly communicate these to students.",
+        "ctrl_f_phrase": "set rules and limits on usage"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "Where these limits are breached and the use of GenAI tools is not properly acknowledged as directed by the subject coordinator, an allegation of academic misconduct may result.",
+        "ctrl_f_phrase": "misconduct may result"
+      },
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "All commencing coursework students at the University are required to complete a \u2018cornerstones of good scholarship\u2019 module that outlines the University\u2019s academic integrity standards and expectations. This includes the limits of appropriate and responsible use of GenAI tools when completing work for assessment.",
+        "ctrl_f_phrase": "limits of appropriate and responsible use of GenAI tools"
+      }
+    ]
+  },
+  {
+    "university": "Technical University of Munich",
+    "country": "Germany",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No specific AI usage policy for students was found for TUM. Available AI strategy and resources focus on research and ethics, without explicit student guidelines.",
+    "raw_excerpts": []
+  }
+]

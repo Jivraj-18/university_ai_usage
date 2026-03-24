@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>University AI Policy Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f6f4ef;
+    --panel: #ffffff;
+    --ink: #1f1b16;
+    --muted: #6a645d;
+    --line: #dfd9cf;
+    --head: #ece6dc;
+    --green-bg: #cfe6b8;
+    --yellow-bg: #f6d796;
+    --red-bg: #f4c4c4;
+    --blank-bg: #efebe4;
+    --green-dot: #345d12;
+    --yellow-dot: #7e4a09;
+    --red-dot: #8f2020;
+    --blank-dot: #9a9388;
+  }
+  body {
+    font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 0% 0%, #efe8d8 0, transparent 40%),
+      radial-gradient(circle at 100% 100%, #e8f0df 0, transparent 35%),
+      var(--bg);
+  }
+  .wrap { padding: 1.5rem; overflow-x: auto; }
+  h1 { font-size: 20px; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: var(--muted); margin-bottom: 14px; line-height: 1.4; }
+  .controls { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 6px 12px; border: 1px solid #c5beaf; border-radius: 9px;
+    background: #fbfaf8; cursor: pointer; font-size: 12px; color: #514b44;
+  }
+  .filter-btn.active { background: #e8e2d7; border-color: #938877; color: #241f18; }
+  input[type=text] {
+    padding: 6px 10px; font-size: 12px; border-radius: 9px; border: 1px solid #c5beaf;
+    flex: 1; min-width: 190px; max-width: 260px; outline: none; background: #fff;
+  }
+  input[type=text]:focus { border-color: #938877; }
+  .legend { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  table { border-collapse: collapse; min-width: 100%; font-size: 12px; background: var(--panel); border: 1px solid var(--line); }
+  th {
+    background: var(--head); padding: 9px 10px; text-align: left; border: 1px solid var(--line);
+    font-weight: 600; white-space: nowrap; cursor: pointer; color: #4f463d; font-size: 11px; line-height: 1.2;
+    position: sticky; top: 0;
+  }
+  th:hover { color: #1a1510; }
+  th.uni-col { min-width: 220px; }
+  td { border: 1px solid var(--line); padding: 0; text-align: center; width: 74px; }
+  td.uni-name { text-align: left; padding: 9px 10px; white-space: nowrap; font-size: 12px; color: var(--ink); background: #fff; }
+  td.group-header {
+    background: #f1ede5; padding: 7px 10px; font-weight: 600; font-size: 11px;
+    color: #62594e; text-align: left; letter-spacing: 0.04em;
+  }
+  .cell {
+    width: 100%; height: 34px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: opacity 0.15s ease;
+  }
+  .cell:hover { opacity: 0.75; }
+  .cell.green { background: var(--green-bg); }
+  .cell.yellow { background: var(--yellow-bg); }
+  .cell.red { background: var(--red-bg); }
+  .cell.blank { background: var(--blank-bg); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.green { background: var(--green-dot); }
+  .dot.yellow { background: var(--yellow-dot); }
+  .dot.red { background: var(--red-dot); }
+  .dot.blank { background: var(--blank-dot); }
+
+  .overlay {
+    display: none; position: fixed; inset: 0; background: rgba(27, 23, 16, 0.45);
+    z-index: 100; align-items: center; justify-content: center; padding: 1rem;
+  }
+  .overlay.show { display: flex; }
+  .modal {
+    background: #fff; border-radius: 12px; border: 1px solid #dfd9cf; padding: 1.2rem;
+    max-width: 560px; width: 100%; position: relative; box-shadow: 0 6px 28px rgba(17, 13, 8, 0.2);
+  }
+  .modal-close {
+    position: absolute; top: 9px; right: 11px; background: none; border: none;
+    cursor: pointer; font-size: 17px; color: #8a8075;
+  }
+  .modal-close:hover { color: #2a241d; }
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 8px;
+    font-size: 11px; font-weight: 600; margin-bottom: 10px;
+  }
+  .badge.green { background: #eaf4de; color: #2c530f; }
+  .badge.yellow { background: #faefdc; color: #6d3e06; }
+  .badge.red { background: #fae8e8; color: #731b1b; }
+  .badge.blank { background: #efebe4; color: #5f584f; }
+  .modal h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .topic { font-size: 11px; color: #8a8075; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .reason { font-size: 12px; color: #4f463d; margin-bottom: 9px; line-height: 1.55; }
+  .quote {
+    border-left: 2px solid #d2c9bb; padding: 8px 12px; font-size: 11px; color: #4f463d;
+    line-height: 1.6; margin-bottom: 10px; font-style: italic; background: #faf8f3; border-radius: 0 4px 4px 0;
+  }
+  .meta { font-size: 11px; color: #72685d; margin-bottom: 6px; }
+  .meta strong { color: #3a322a; font-weight: 600; }
+  .src-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .src-btn {
+    display: inline-block; padding: 7px 12px; border: 1px solid #c9c1b3; border-radius: 8px;
+    font-size: 11px; text-decoration: none; color: #1f588b; background: #fff;
+  }
+  .src-btn:hover { background: #f4f1ea; }
+  .small { font-size: 10px; color: #8a8075; }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 1rem; }
+    th.uni-col { min-width: 180px; }
+    td { width: 66px; }
+    .modal { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>University AI Policy Dashboard</h1>
+  <p class="subtitle">20 universities x 15 policy metrics. Built from all research outputs, with targeted web verification for specific cells where needed.</p>
+
+  <div class="controls">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('India', this)">India Only</button>
+    <button class="filter-btn" onclick="setFilter('International', this)">International Only</button>
+    <input type="text" placeholder="Search university..." oninput="setSearch(this.value)" />
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background: var(--green-dot)"></div>Explicitly allowed / supported</div>
+    <div class="leg-item"><div class="leg-dot" style="background: var(--yellow-dot)"></div>Allowed with restrictions</div>
+    <div class="leg-item"><div class="leg-dot" style="background: var(--red-dot)"></div>Prohibited / misconduct</div>
+    <div class="leg-item"><div class="leg-dot" style="background: var(--blank-dot)"></div>No mention found</div>
+  </div>
+
+  <table id="grid">
+    <thead>
+      <tr id="head-row"></tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="document.getElementById('overlay').classList.remove('show')">x</button>
+    <div class="badge" id="m-badge"></div>
+    <h3 id="m-uni"></h3>
+    <div class="topic" id="m-topic"></div>
+    <div class="reason" id="m-reason"></div>
+    <div class="quote" id="m-quote"></div>
+    <div class="meta"><strong>Source title:</strong> <span id="m-title"></span></div>
+    <div class="meta"><strong>Evidence origin:</strong> <span id="m-origin"></span></div>
+    <div class="meta"><strong>Search note:</strong> <span id="m-search"></span></div>
+    <div class="src-row">
+      <a class="src-btn" id="m-src-btn" target="_blank" rel="noopener noreferrer">Open source and highlight text</a>
+      <span class="small" id="m-src-domain"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+const cols = [
+  { key: 'homework', label: 'Homework' },
+  { key: 'exams', label: 'Exams' },
+  { key: 'thesis', label: 'Thesis' },
+  { key: 'disclosure', label: 'Disclosure' },
+  { key: 'penalties', label: 'Penalties' },
+  { key: 'faculty', label: 'Faculty\nDiscretion' },
+  { key: 'tools', label: 'Inst.\nTools' },
+  { key: 'research', label: 'Research' },
+  { key: 'detection', label: 'AI\nDetection' },
+  { key: 'training', label: 'Training' },
+  { key: 'media', label: 'Media\nGeneration' },
+  { key: 'privacy', label: 'Data\nPrivacy' },
+  { key: 'citation', label: 'Citation' },
+  { key: 'responsibility', label: 'Student\nResponsibility' },
+  { key: 'plagiarism', label: 'Plagiarism\nPolicy' }
+];
+
+const labels = {
+  green: 'Explicitly Allowed / Supported',
+  yellow: 'Allowed With Conditions',
+  red: 'Prohibited / Misconduct',
+  blank: 'No Mention Found'
+};
+
+function cell(c='blank', reason='No relevant policy text found in research files and targeted web verification for this topic.', quote='', url='', phrase='', sourceTitle='', evidence='research files', searched='Research files reviewed; no explicit text found for this topic.') {
+  return { c, reason, quote, url, phrase, sourceTitle, evidence, searched };
+}
+
+const universities = [
+  {
+    uni: 'Indian Institute of Technology Bombay', country: 'India', overrides: {
+      homework: cell('red', 'Course-level source explicitly prohibits LLM use in written submissions.', 'In general, LLMs must not be used in any form for preparing any written submission for the course (that is, responses to readings, project proposal, mid-stage report, and final report).', 'https://www.cse.iitb.ac.in/~shivaram/teaching/cs748-s2026/index.html', 'LLMs must not be used in any form', 'CS 748: Advances in Intelligent and Learning Agents (Spring 2026)', 'research files', 'Checked all research outputs; this is course-level evidence.'),
+      disclosure: cell('yellow', 'Same course requires AI-use declaration in submitted work.', 'They should declare this usage in their written submissions.', 'https://www.cse.iitb.ac.in/~shivaram/teaching/cs748-s2026/index.html', 'declare this usage in their written', 'CS 748: Advances in Intelligent and Learning Agents (Spring 2026)', 'research files', 'No stronger institution-wide source found in research files.'),
+      research: cell('green', 'Course-level source explicitly allows LLM use for project research coding work.', 'On the other hand, the students are free to use LLMs for coding or any other aspect of their research while working on their course project.', 'https://www.cse.iitb.ac.in/~shivaram/teaching/cs748-s2026/index.html', 'free to use LLMs for coding or any other aspect of their research', 'CS 748: Advances in Intelligent and Learning Agents (Spring 2026)', 'research files', 'Course-level evidence only.'),
+      penalties: cell('yellow', 'Policy signals strict handling of violations under institute disciplinary processes.', 'Academic violations, as detailed below, will be dealt with strictly, in accordance with the institute\'s procedures and disciplinary actions for academic malpractice.', 'https://www.cse.iitb.ac.in/~shivaram/teaching/cs748-s2026/index.html', 'dealt with strictly, in accordance with the institute\'s procedures', 'CS 748: Advances in Intelligent and Learning Agents (Spring 2026)', 'research files', 'No institution-wide AI penalties text found.'),
+    }
+  },
+  {
+    uni: 'Indian Institute of Technology Delhi', country: 'India', overrides: {
+      disclosure: cell('yellow', 'Recent guideline requires full disclosure of AI-assisted work.', 'Any work or content generated with the assistance of AI tools should be fully disclosed to ensure transparency and maintain academic integrity,', 'https://www.business-standard.com/education/news/iit-delhi-ai-assisted-work-disclosure-guidelines-2025-125052801555_1.html', 'Any work or content generated with the assistance of AI tools should be fully disclosed', 'Disclose any AI-assisted academic work: IIT-Delhi issues new guidelines', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      training: cell('green', 'Guidelines recommend semesterly workshops for responsible AI use.', 'It is recommended that institutes organize semesterly workshops, developed in collaboration with Academic Units (AUs), to promote fair and effective use of AI tools among both students and faculty.', 'https://www.scribd.com/document/900201778/Generative-AI-Guidelines-at-IIT-Delhi', 'workshops, developed in collaboration with Academic Units', 'On the use of Generative AI at IIT Delhi', 'research files', 'Sourced from research outputs with verbatim excerpt.'),
+      tools: cell('yellow', 'Guidelines recommend institute-wide licenses for equitable tool access.', 'It is recommended that the institute acquire an institute-wide license for the advanced and more accurate versions of GenAI tools which are behind paywalls, such as ChatGPT and GitHub Copilot.', 'https://www.scribd.com/document/900201778/Generative-AI-Guidelines-at-IIT-Delhi', 'acquire an institute-wide license', 'On the use of Generative AI at IIT Delhi', 'research files', 'Recommendation language, not hard mandate.'),
+      faculty: cell('yellow', 'Guidelines delegate plagiarism-policy design to course instructors.', 'it is recommended that each course instructor develop a plagiarism policy under the updated curriculum.', 'https://www.scribd.com/document/900201778/Generative-AI-Guidelines-at-IIT-Delhi', 'course instructor develop a plagiarism policy', 'On the use of Generative AI at IIT Delhi', 'research files', 'Represents faculty-driven implementation.'),
+      privacy: cell('yellow', 'Advisory warns against sharing sensitive or private content in tool inputs.', 'it is crucial to carefully review any information being submitted to ensure that it does not contain sensitive or private content', 'https://www.business-standard.com/education/news/iit-delhi-ai-assisted-work-disclosure-guidelines-2025-125052801555_1.html', 'ensure that it does not contain sensitive or private content', 'Disclose any AI-assisted academic work: IIT-Delhi issues new guidelines', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      plagiarism: cell('yellow', 'Guideline discourages blanket bans but requires explicit plagiarism policies.', 'Recognizing that outright restriction on the use of GenAI tools in academic tasks is neither enforceable nor desirable, it is recommended that each course instructor develop a plagiarism policy under the updated curriculum.', 'https://www.scribd.com/document/900201778/Generative-AI-Guidelines-at-IIT-Delhi', 'outright restriction on the use of GenAI tools', 'On the use of Generative AI at IIT Delhi', 'research files', 'Classification kept conservative due policy framing.'),
+    }
+  },
+  {
+    uni: 'Indian Institute of Technology Madras', country: 'India', overrides: {
+      homework: cell('red', 'Course assignment source explicitly bans generative AI for that assignment.', 'no use of generative AI is permitted for this assignment', 'https://ae.iitm.ac.in/~nidish/courses/as3020/files/mod2/as3020_assignment2.pdf', 'no use of generative AI is permitted', 'AS3020 Assignment Instructions', 'research files', 'No institution-wide AI policy text found in research files.'),
+    }
+  },
+  {
+    uni: 'Indian Institute of Science Bangalore', country: 'India', overrides: {
+      disclosure: cell('yellow', 'Non-word-processing AI use must be disclosed in Methods or Acknowledgements.', 'Any use of AI tools for tasks other than word processing (see below) must be disclosed in the Methods or Acknowledgements section', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'must be disclosed in the Methods or Acknowledgements', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Used institution handbook evidence.'),
+      citation: cell('yellow', 'Policy requires acknowledging and citing ideas/material from AI tools.', 'properly acknowledges and cites the use of the ideas, results, material or words of others, where others includes both web sources and AI tools;', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'includes both web sources and AI tools', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Direct citation requirement.'),
+      faculty: cell('green', 'Course instructors are expected to set AI-use policies at course start.', 'Course Instructors should clearly specify, at the beginning of the course, specific policies governing the use of AI tools for the course\'s sessional works and final works that will be assessed', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'specific policies governing the use of AI tools', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Explicit faculty policy-setting role.'),
+      penalties: cell('red', 'Academic-integrity breaches can escalate to F grade and expulsion.', 'the first violation of academic breach will lead to a warning and/or an F grade in the course. A repeat offence, if deemed sufficiently serious, could lead to expulsion', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'first violation of academic breach will lead to a warning', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Strong sanctions language.'),
+      privacy: cell('red', 'Policy explicitly forbids entering sensitive/confidential data in open AI tools.', 'Do not input sensitive, confidential, or restricted information into open generative AI tools', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'sensitive, confidential, or restricted', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Direct prohibition wording.'),
+      responsibility: cell('yellow', 'Students remain responsible for correctness of AI-assisted content.', 'the student is wholly responsible for the correctness of the content generated by such tools', 'https://iisc.ac.in/wp-content/uploads/2024/09/UG-Handbook-2024-25-signed.pdf', 'wholly responsible for the correctness', 'Student Information Handbook 2024-25 (Academic Integrity Policy)', 'research files', 'Responsibility requirement, not a ban.'),
+    }
+  },
+  {
+    uni: 'Indian Institute of Management Ahmedabad', country: 'India', overrides: {
+      training: cell('green', 'Institution reports teaching students how to use GenAI tools effectively.', 'we are trying to teach them how to use the tool to query efficiently', 'https://www.iima.ac.in/node/20841', 'we are trying to teach them', 'How IIM-A is embracing GenAI in curriculum', 'research files', 'Evidence is from institution communication; policy granularity is limited.'),
+      homework: cell('yellow', 'Use in classes is discussed as part of pedagogical experimentation.', 'started using ChatGPT to generate class', 'https://www.iima.ac.in/node/20841', 'started using ChatGPT to generate class', 'How IIM-A is embracing GenAI in curriculum', 'research files', 'Signal of controlled classroom use.'),
+    }
+  },
+  {
+    uni: 'University of Delhi', country: 'India', overrides: {
+      disclosure: cell('yellow', 'Departmental journal policy requires disclosure of AI-assisted manuscript preparation.', 'Authors are required to disclose the use of AI-assisted tools in the preparation of their manuscripts', 'https://jsir.sanskrit.du.ac.in/about/ai-generated-content-policy.php', 'Failure to disclose relevant AI use', 'AI-Generated Content Policy - Journal of Sanskrit & Indic Studies', 'research files', 'Source is unit-level, not central university policy.'),
+      penalties: cell('red', 'Failure to disclose AI use is treated as publication-ethics breach.', 'Failure to disclose relevant AI use may be treated as a breach of publication ethics', 'https://jsir.sanskrit.du.ac.in/about/ai-generated-content-policy.php', 'Failure to disclose relevant AI use', 'AI-Generated Content Policy - Journal of Sanskrit & Indic Studies', 'research files', 'Explicit sanctions language in source policy.'),
+      research: cell('yellow', 'Policy allows limited AI use for support with explicit boundaries.', 'limited and responsible manner to support', 'https://jsir.sanskrit.du.ac.in/about/ai-generated-content-policy.php', 'limited and responsible manner to support', 'AI-Generated Content Policy - Journal of Sanskrit & Indic Studies', 'research files', 'Permitted with conditions.'),
+    }
+  },
+  {
+    uni: 'Jadavpur University', country: 'India', overrides: {
+      homework: cell('blank', 'No AI-specific student policy text found for this topic.', '', '', '', '', 'both', 'Research files reported no policy; targeted web check on official site homepage/notifications found no explicit AI-use policy text for assignments.'),
+      exams: cell('blank', 'No AI-specific student policy text found for this topic.', '', '', '', '', 'both', 'Research files reported no policy; targeted web check found no explicit exam AI-rule text.'),
+      thesis: cell('blank', 'No AI-specific student policy text found for this topic.', '', '', '', '', 'both', 'Research files reported no policy; targeted web check found no thesis AI policy text.'),
+      disclosure: cell('blank', 'No AI-specific disclosure policy text found.', '', '', '', '', 'both', 'Research files and targeted web check found no disclosure rule.'),
+      penalties: cell('blank', 'No AI-specific misconduct language located.', '', '', '', '', 'both', 'Only general notices/pages found during targeted web check.'),
+      faculty: cell('blank', 'No AI-specific faculty-discretion policy text found.', '', '', '', '', 'both', 'No explicit AI policy discovered in research outputs or targeted web search.'),
+      tools: cell('blank', 'No AI-specific institutional tools policy found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      research: cell('blank', 'No AI-specific research-use policy found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      detection: cell('blank', 'No AI-detection policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      training: cell('blank', 'No AI-training policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      media: cell('blank', 'No AI media-generation policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      privacy: cell('blank', 'No AI data-privacy policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      citation: cell('blank', 'No AI citation policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      responsibility: cell('blank', 'No student-responsibility policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+      plagiarism: cell('blank', 'No AI-specific plagiarism policy text found.', '', '', '', '', 'both', 'No relevant policy text found.'),
+    }
+  },
+  {
+    uni: 'BITS Pilani', country: 'India', overrides: {
+      privacy: cell('yellow', 'AI use with personal/sensitive/confidential data requires explicit approval.', 'one should not use any AI tools similar to but not limited to ChatGPT, CoPilot etc., wherever personal data/sensitive/confidential data is involved, without explicit approval', 'https://www.bits-pilani.ac.in/wp-content/uploads/BITS-Pilani-Institute-Data-Privacy-Policy.pdf', 'one should not use any AI', 'BITS Pilani Institute Data Privacy Policy', 'research files', 'Conditional allowance based on approval.'),
+      tools: cell('yellow', 'Policy names specific AI tools and restricts their use with sensitive data.', 'one should not use any AI tools similar to but not limited to ChatGPT, CoPilot etc.', 'https://www.bits-pilani.ac.in/wp-content/uploads/BITS-Pilani-Institute-Data-Privacy-Policy.pdf', 'one should not use any AI tools', 'BITS Pilani Institute Data Privacy Policy', 'research files', 'Tool use governed by data sensitivity.'),
+    }
+  },
+  {
+    uni: 'Manipal Institute of Technology', country: 'India', overrides: {
+      disclosure: cell('yellow', 'Guidelines require clearly disclosing AI assistance.', 'Any AI assistance should be clearly disclosed. Never use AI to plagiarize or bypass academic expectations', 'https://www.scribd.com/document/983219884/Guidelines-for-Artificial-Intelligence-AI-Usage', 'Any AI assistance should be clearly disclosed', 'Guidelines for Artificial Intelligence (AI) Usage (MAHE)', 'research files', 'Direct disclosure guidance in source.'),
+      training: cell('green', 'MAHE partnership indicates active institutional AI enablement in learning.', 'MAHE will implement AI-powered tools and resources across its academic programs to support personalised learning', 'https://www.manipal.edu/mu/news-events/mahe-partners-with-openai-to-integrate-artificial-intelligence-a.html', 'across its academic programs', 'MAHE Partners with OpenAI to Integrate Artificial Intelligence', 'research files', 'Institution announcement used as evidence.'),
+      research: cell('green', 'Institutional rollout includes research support with AI-powered resources.', 'MAHE will implement AI-powered tools and resources across its academic programs to support personalised learning', 'https://www.manipal.edu/mu/news-events/mahe-partners-with-openai-to-integrate-artificial-intelligence-a.html', 'across its academic programs', 'MAHE Partners with OpenAI to Integrate Artificial Intelligence', 'research files', 'Research support implied in institution announcement.'),
+      plagiarism: cell('red', 'Policy explicitly disallows plagiarism through AI.', 'Never use AI to plagiarize or bypass academic expectations', 'https://www.scribd.com/document/983219884/Guidelines-for-Artificial-Intelligence-AI-Usage', 'Never use AI to plagiarize', 'Guidelines for Artificial Intelligence (AI) Usage (MAHE)', 'research files', 'Clear prohibition text.'),
+    }
+  },
+  {
+    uni: 'Ashoka University', country: 'India', overrides: {
+      training: cell('green', 'Academic integrity training includes AI misuse/ethics content.', 'A section dedicated to the potential uses and misuse of AI-powered language models has been incorporated', 'https://my.ashoka.edu.in/SIS/UploadedFile/OrientationMaterial/Policies_1b312936-8ec3-4aae-bcc8-3bbf03b57d6e.pdf', 'potential uses and misuse of AI-powered', 'Academic Integrity Policy - Ashoka University', 'research files', 'Training-oriented evidence.'),
+      penalties: cell('red', 'Policy frames AI misuse under academic integrity violations.', 'Violations of academic integrity standards', 'https://my.ashoka.edu.in/SIS/UploadedFile/OrientationMaterial/Policies_1b312936-8ec3-4aae-bcc8-3bbf03b57d6e.pdf', 'Violations of academic integrity standards', 'Academic Integrity Policy - Ashoka University', 'research files', 'Conservative classification based on violations framing.'),
+      research: cell('yellow', 'Institution strategy describes AI use for student and researcher capability building.', 'equipping students and researchers to', 'https://www.ashoka.edu.in/page/aiashoka/', 'equipping students and researchers to', 'AI@Ashoka', 'research files', 'Supportive but broad statement; classified conditional.'),
+    }
+  },
+
+  {
+    uni: 'Massachusetts Institute of Technology', country: 'International', overrides: {
+      disclosure: cell('yellow', 'Guidance asks users to disclose generative AI use for academic/research output.', 'You should disclose the use of generative AI tools for all academic, educational, and research-related uses.', 'https://ist.mit.edu/ai-guidance', 'disclose the use of generative AI tools', 'Guidance for use of Generative AI tools', 'research files', 'Disclosure requirement indicates conditional use.'),
+      responsibility: cell('yellow', 'Users remain accountable for accuracy of AI-generated content.', 'You are responsible for the accuracy of any information you publish, including AI-generated content', 'https://ist.mit.edu/ai-guidance', 'accuracy of any information you publish', 'Guidance for use of Generative AI tools', 'research files', 'Responsibility condition.'),
+      privacy: cell('red', 'High-risk MIT information is not approved for any GenAI tools.', 'No Generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information.', 'https://ist.mit.edu/ai-guidance', 'not approved for use with High Risk MIT', 'Guidance for use of Generative AI tools', 'research files', 'Clear prohibition for sensitive data.'),
+      faculty: cell('yellow', 'Course-level policies are explicitly set by faculty in MIT contexts.', 'faculty will set their own policies pertaining to the use', 'https://ist.mit.edu/ai-guidance', 'faculty will set their own policies', 'Guidance for use of Generative AI tools', 'research files', 'Permission depends on instructor/course rules.'),
+    }
+  },
+  {
+    uni: 'Stanford University', country: 'International', overrides: {
+      homework: cell('yellow', 'Default treatment is conditional and instructor-dependent.', 'Absent a clear statement from a course instructor, use of or consultation with generative AI shall be treated analogously to assistance from another person', 'https://communitystandards.stanford.edu/generative-ai-policy-guidance', 'treated analogously to assistance from another person', 'Generative AI Policy Guidance - Stanford Community Standards', 'research files', 'Conditional baseline rule.'),
+      faculty: cell('green', 'Instructors are explicitly allowed to set course-level AI policies.', 'Individual course instructors are free to set their own policies regulating the use of generative AI tools in their courses', 'https://communitystandards.stanford.edu/generative-ai-policy-guidance', 'free to set their own policies regulating the use', 'Generative AI Policy Guidance - Stanford Community Standards', 'research files', 'Strong faculty discretion signal.'),
+      penalties: cell('red', 'Honor code violations related to unauthorized AI use are sanctionable.', 'Anyone violating the honor code policy', 'https://cs221.stanford.edu', 'Anyone violating the honor code policy', 'CS221 Course Policy', 'research files', 'Conservative classification from explicit violation language.'),
+      detection: cell('yellow', 'Use of detection software requires clear advance notice.', 'provide clear advance notice that they may use detection software', 'https://communitystandards.stanford.edu/generative-ai-policy-guidance', 'provide clear advance notice that they may use detection software', 'Generative AI Policy Guidance - Stanford Community Standards', 'research files', 'Detection framed as conditional process.'),
+      media: cell('yellow', 'Guidance explicitly includes image/audio/video generators in AI scope.', 'Honor Code implications of generative AI tools such as ChatGPT, Bard, DALL-E', 'https://communitystandards.stanford.edu/generative-ai-policy-guidance', 'Honor Code implications of generative AI tools such as ChatGPT, Bard, DALL-E', 'Generative AI Policy Guidance - Stanford Community Standards', 'research files', 'Media-generation tools explicitly in scope.'),
+    }
+  },
+  {
+    uni: 'Harvard University', country: 'International', overrides: {
+      faculty: cell('green', 'Faculty are required to communicate class AI policies.', 'All faculty are required to inform students of the policies governing generative AI use in class', 'https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/', 'All faculty are required to inform', 'Generative AI Guidance - Harvard OUE', 'research files', 'Explicit faculty governance requirement.'),
+      homework: cell('red', 'Default framing in guidance is disallow unless explicitly permitted by instructor context.', 'The default is that such use is disallowed', 'https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/', 'The default is that such use is disallowed', 'Generative AI Guidance - Harvard OUE', 'research files', 'Conservative default classification.'),
+      disclosure: cell('yellow', 'School-level guidance requires acknowledgement/documentation when AI is used.', 'acknowledge and document that use in your assignment submission', 'https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard', 'acknowledge and document that use in your assignment submission', 'Guidelines for Using ChatGPT and other Generative AI Tools at Harvard', 'research files', 'Conditioned on use.'),
+      responsibility: cell('yellow', 'Guidance warns that AI output may be fabricated and requires user verification.', 'AI-generated content can be inaccurate, misleading, or entirely fabricated', 'https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard', 'AI-generated content can be inaccurate, misleading, or entirely fabricated', 'Guidelines for Using ChatGPT and other Generative AI Tools at Harvard', 'research files', 'Responsibility-focused condition.'),
+      privacy: cell('red', 'Guidance disallows entering confidential institutional data into public GenAI tools.', 'not enter data classified as confidential', 'https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard', 'not enter data classified as confidential', 'Guidelines for Using ChatGPT and other Generative AI Tools at Harvard', 'research files', 'Clear confidentiality restriction.'),
+    }
+  },
+  {
+    uni: 'University of Oxford', country: 'International', overrides: {
+      exams: cell('yellow', 'Assessment setter must declare whether and how AI is permitted per assessment.', 'Those setting summative assessment must declare whether and how students can use AI in summative assessment', 'https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment', 'declare whether and how students can use AI in summative assessment', 'AI use in summative assessment - University of Oxford', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      disclosure: cell('yellow', 'Students must acknowledge AI use in the prescribed declaration format.', 'acknowledge their use of AI as part of the summative assessment submission and use a formal declaration in the format prescribed by the assessment setter.', 'https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment', 'acknowledge their use of AI as part of the summative assessment submission', 'AI use in summative assessment - University of Oxford', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      penalties: cell('red', 'Unauthorized AI use in submissions is treated as cheating/plagiarism and disciplinable.', 'Any unauthorised use of AI in work submitted for assessment constitutes cheating and may constitute plagiarism', 'https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools', 'constitutes cheating and may constitute plagiarism', 'Guidance on safe and responsible use of Gen AI tools', 'research files', 'Strong misconduct language.'),
+      tools: cell('green', 'University-supported GenAI tools are made available for use.', 'You may make use of University-supported generative AI tools', 'https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools', 'University-supported generative AI tools', 'Guidance on safe and responsible use of Gen AI tools', 'research files', 'Explicit support/provision language.'),
+      research: cell('yellow', 'Substantive GenAI use in research should be declared.', 'Substantive use of GenAI should be declared', 'https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools', 'Substantive use of GenAI should be declared', 'Guidance on safe and responsible use of Gen AI tools', 'research files', 'Allowed with declaration.'),
+      training: cell('green', 'University states free training is available for safe AI use.', 'Free training is available across the University and Colleges', 'https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools', 'Free training is available across the University and Colleges', 'Guidance on safe and responsible use of Gen AI tools', 'research files', 'Explicit training support.'),
+      faculty: cell('green', 'Assessment setters must publish AI-permission rules for each assessment.', 'Those setting summative assessment must declare whether and how students can use AI in summative assessment', 'https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment', 'declare whether and how students can use AI in summative assessment', 'AI use in summative assessment - University of Oxford', 'both', 'Web-verified during this build.'),
+      plagiarism: cell('red', 'Policy explicitly maps unauthorized AI use to cheating/plagiarism.', 'constitutes cheating and may constitute plagiarism', 'https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools', 'constitutes cheating and may constitute plagiarism', 'Guidance on safe and responsible use of Gen AI tools', 'research files', 'Explicit prohibition context.'),
+    }
+  },
+  {
+    uni: 'University of Cambridge', country: 'International', overrides: {
+      homework: cell('red', 'Department-level source prohibits submitting AI-generated text as own work.', 'HPS prohibits students from presenting text, ideas and other material generated by AI tools as their own work', 'https://www.hps.cam.ac.uk/students/academic-misconduct', 'generated by AI tools as their own work', 'Academic misconduct: plagiarism and use of AI', 'research files', 'Conservative classification from explicit prohibition language.'),
+      exams: cell('red', 'Guidance forbids direct submission of AI-generated text in assessed work.', 'Under no circumstances should the text generated', 'https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/using-generative-ai', 'Under no circumstances should the text generated', 'Using generative AI - University of Cambridge', 'research files', 'Assessment-relevant prohibition wording.'),
+      disclosure: cell('yellow', 'Department process requires declaration on written take-home work.', 'cover sheet with any written take-home', 'https://www.hps.cam.ac.uk/students/academic-misconduct', 'cover sheet with any written take-home', 'Academic misconduct: plagiarism and use of AI', 'research files', 'Disclosure condition.'),
+      detection: cell('red', 'Guidance cautions that AI-detection software is not proven accurate for decisions.', 'AI detection software as it is not proven to be accurate', 'https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct/artificial-intelligence-ai', 'AI detection software as it is not proven to be accurate', 'Artificial Intelligence (AI) - Cambridge Education Policy', 'research files', 'Conservative stance: discouraged detection reliance.'),
+      media: cell('yellow', 'Guidance explicitly notes AI tools can generate images/diagrams.', 'The software can generate images and diagrams', 'https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/using-generative-ai', 'generate images and diagrams', 'Using generative AI - University of Cambridge', 'research files', 'Scope mention, not full permission.'),
+      tools: cell('green', 'Guidance references standard licensed GenAI tooling at institutional level.', 'standard licensed GenAI tools are', 'https://www.information-compliance.admin.cam.ac.uk/data-protection/guidance/ai-guidance', 'standard licensed GenAI tools are', 'AI guidance - University of Cambridge', 'research files', 'Institutional tooling support indicated.'),
+      plagiarism: cell('red', 'Unacknowledged AI-generated content is treated as misconduct in summative assessment.', 'unacknowledged content generated by artificial intelligence within a summative assessment', 'https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct/artificial-intelligence-ai', 'unacknowledged content generated by artificial intelligence', 'Artificial Intelligence (AI) - Cambridge Education Policy', 'research files', 'Explicit misconduct context.'),
+      privacy: cell('red', 'Examiners are not allowed to upload student work to generative AI systems.', 'not permitted to upload, copy, or share student work with Generative AI', 'https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct/artificial-intelligence-ai', 'not permitted to upload, copy, or share student work', 'Artificial Intelligence (AI) - Cambridge Education Policy', 'research files', 'Clear data handling prohibition.'),
+    }
+  },
+  {
+    uni: 'ETH Zurich', country: 'International', overrides: {
+      disclosure: cell('yellow', 'Guidance requires explicit declaration of AI-generated portions.', 'Be explicit about which content or parts of materials and work have been created with the help of generative AI', 'https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html', 'Be explicit about which content or parts', 'Academic integrity with generative AI - ETH Zurich', 'research files', 'Declaration requirement means conditional use.'),
+      penalties: cell('red', 'Unauthorized aids or non-disclosure remain disciplinable.', 'Violations such as use of unauthorised aids or non-disclosure of their use will continue to be subject to disciplinary action', 'https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html', 'subject to disciplinary action', 'Academic integrity with generative AI - ETH Zurich', 'research files', 'Explicit sanctions language.'),
+      faculty: cell('green', 'Lecturers are encouraged to define AI rules for assignments/assessments.', 'Lecturers are encouraged to establish rules and guidelines regarding the use of generative artificial intelligence for assignments, projects and assessments in their courses.', 'https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html', 'Lecturers are encouraged to establish rules and guidelines', 'Academic integrity with generative AI - ETH Zurich', 'research files', 'Faculty governance explicitly encouraged.'),
+      tools: cell('green', 'Institution provides standard Microsoft license support for approved tooling.', 'standard Microsoft licence and can be used', 'https://ethz.ch/staffnet/en/news-and-events/internal-news/archive/2024/07/new-guidelines-for-the-use-of-generative-ai-in-education.html', 'standard Microsoft licence and can be used', 'New guidelines for generative AI in education - ETH Zurich', 'research files', 'Institution-provided tools noted.'),
+      training: cell('green', 'Workshops are provided for teaching and learning with GenAI.', 'workshops on GenAI in Teaching and Learning', 'https://ethz.ch/staffnet/en/news-and-events/internal-news/archive/2024/07/new-guidelines-for-the-use-of-generative-ai-in-education.html', 'workshops on GenAI in Teaching and Learning', 'New guidelines for generative AI in education - ETH Zurich', 'research files', 'Direct training support language.'),
+      detection: cell('yellow', 'Policy notes AI-output recognition reliability limits.', 'recognition of output generated using generative AI is currently unreliable', 'https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html', 'currently unreliable', 'Academic integrity with generative AI - ETH Zurich', 'research files', 'Detection treated as limited evidence, not definitive.'),
+      thesis: cell('yellow', 'Declarations of originality were updated to include AI-use statements.', 'declarations of originality were adapted to include a passage', 'https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html', 'declarations of originality were adapted', 'Academic integrity with generative AI - ETH Zurich', 'research files', 'Conditional disclosure requirement for advanced work.'),
+    }
+  },
+  {
+    uni: 'National University of Singapore', country: 'International', overrides: {
+      disclosure: cell('yellow', 'Unsupervised assessment permits AI use only when duly acknowledged.', 'the default assumption for any unsupervised (e.g., take home) assessment task is that the use of AI tools is permitted so long as the use is duly acknowledged', 'https://ctlt.nus.edu.sg/wp-content/uploads/2025/11/Policy-for-Use-of-AI-in-Teaching-and-Learning-2024.pdf', 'duly acknowledged', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Conditional permission by acknowledgement.'),
+      homework: cell('yellow', 'Default for unsupervised assessments is permitted with acknowledgement.', 'the default assumption for any unsupervised (e.g., take home) assessment task is that the use of AI tools is permitted so long as the use is duly acknowledged', 'https://ctlt.nus.edu.sg/wp-content/uploads/2025/11/Policy-for-Use-of-AI-in-Teaching-and-Learning-2024.pdf', 'unsupervised (e.g., take home)', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Allowed with conditions.'),
+      exams: cell('red', 'AI-free capability can be tested through on-site proctored exams/orals.', 'on-site proctored exam or oral interview', 'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf', 'on-site proctored exam or oral interview', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Indicates AI-restricted assessment mode.'),
+      tools: cell('green', 'Policy directs use of NUS-approved AI tools when NUS data is involved.', 'Wherever NUS data is involved, use NUS approved AI tools.', 'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf', 'NUS approved AI tools', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Explicit approved-tool pathway.'),
+      penalties: cell('red', 'Presenting AI output as own work is plagiarism and sanctionable.', 'representing an AI\'s output as your own work is plagiarism', 'https://libguides.nus.edu.sg/new2nus/acadintegrity', 'output as your own work is plagiarism', 'NUS Academic Integrity Guide', 'research files', 'Strong misconduct framing.'),
+      faculty: cell('yellow', 'Permissibility depends on assignment-specific instructions from instructors.', 'Whether or not using an AI tool in a particular way', 'https://libguides.nus.edu.sg/new2nus/acadintegrity', 'Whether or not using an AI tool in a particular way', 'NUS Academic Integrity Guide', 'research files', 'Instructor-context dependency.'),
+      privacy: cell('yellow', 'Institutional data usage requires approved tools and controls.', 'Wherever NUS data is involved, use NUS approved AI tools.', 'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf', 'Wherever NUS data is involved', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Data-sensitive conditionality.'),
+      detection: cell('yellow', 'Detection output is not treated as conclusive evidence.', 'not admissible as conclusive evidence', 'https://ctlt.nus.edu.sg/wp-content/uploads/2025/11/Policy-for-Use-of-AI-in-Teaching-and-Learning-2024.pdf', 'not admissible as conclusive evidence', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Detection used cautiously.'),
+      responsibility: cell('yellow', 'Student remains responsible for quality of submitted work.', 'you, rather than the AI tool, are responsible for the quality', 'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf', 'you, rather than the AI tool, are responsible', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Responsibility requirement.'),
+      plagiarism: cell('red', 'Failure to acknowledge AI-generated content may be sanctioned as plagiarism.', 'failed to acknowledge their use of AI', 'https://ctlt.nus.edu.sg/wp-content/uploads/2025/11/Policy-for-Use-of-AI-in-Teaching-and-Learning-2024.pdf', 'failed to acknowledge their use of AI', 'Policy for Use of AI in Teaching and Learning', 'research files', 'Explicit sanction trigger.'),
+    }
+  },
+  {
+    uni: 'University of Toronto', country: 'International', overrides: {
+      homework: cell('red', 'Default policy prohibits GenAI unless instructor explicitly permits it.', 'The University of Toronto takes the stance that students are not allowed to use generative AI in a course unless the instructor explicitly permits it.', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'students are not allowed to use generative AI in a course unless the instructor explicitly permits it', 'Generative AI and Academic Integrity - UTM', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      thesis: cell('yellow', 'Thesis/research use requires prior supervisor and committee approval.', 'The use of generative AI tools in any aspect of researching or writing of the thesis must be done with the prior approval of the supervisor(s) and supervisory committee.', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'prior approval of the supervisor(s) and supervisory committee', 'Generative AI and Academic Integrity - UTM', 'research files', 'Permitted only with prior approval.'),
+      disclosure: cell('yellow', 'Policies and assignment instructions may require citations/prompts disclosure.', 'you may need to cite the portions that were generated by AI, or you may need to include the prompts and outputs', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'cite the portions that were generated by AI', 'Generative AI and Academic Integrity - UTM', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      penalties: cell('red', 'Unauthorized AI use is treated as an academic offence/misconduct.', 'Use of generative AI tools when not permitted is considered an academic offence and can result in an allegation of academic misconduct being raised by your instructor.', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'considered an academic offence and can result in an allegation', 'Generative AI and Academic Integrity - UTM', 'research files', 'Explicit offence language.'),
+      faculty: cell('green', 'Instructor permission governs AI use in each course.', 'students are not allowed to use generative AI in a course unless the instructor explicitly permits it', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'unless the instructor explicitly permits it', 'Generative AI and Academic Integrity - UTM', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      detection: cell('red', 'University guidance says it does not support AI-detection tools.', 'U of T does not support the use of AI-detection tools', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'U of T does not support the use of AI-detection tools', 'Generative AI and Academic Integrity - UTM', 'research files', 'Explicit non-support statement.'),
+      privacy: cell('red', 'Guidance forbids inputting private/confidential/identifying information.', 'Do not input any private, confidential or identifying information into generative AI.', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'Do not input any private, confidential or identifying information', 'Generative AI and Academic Integrity - UTM', 'both', 'Research evidence confirmed via web fetch during this build.'),
+      plagiarism: cell('red', 'Using unauthorized AI aid is treated as academic offence.', 'Any student using an unauthorized aid has committed an offence', 'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai', 'unauthorized aid has committed an offence', 'Generative AI and Academic Integrity - UTM', 'research files', 'Plagiarism/misconduct framing.'),
+    }
+  },
+  {
+    uni: 'University of Melbourne', country: 'International', overrides: {
+      homework: cell('yellow', 'AI-generated material is permitted only when properly acknowledged and cited.', 'If a student does use AI generated material in the preparation of their assessment submission, this must be appropriately acknowledged and cited', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'appropriately acknowledged and cited', 'University policy and actions - University of Melbourne', 'research files', 'Conditional use tied to citation.'),
+      disclosure: cell('yellow', 'Policy requires acknowledgement/citation under assessment rules.', 'this must be appropriately acknowledged and cited in accordance with the Assessment and Results Policy', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'Assessment and Results Policy', 'University policy and actions - University of Melbourne', 'research files', 'Disclosure/citation condition.'),
+      faculty: cell('green', 'Subject coordinators set AI-permission rules at subject level.', 'subject coordinator will set the rules on whether AI tools are permitted', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'subject coordinator will set the rules on whether AI tools are permitted', 'University policy and actions - University of Melbourne', 'research files', 'Explicit faculty discretion.'),
+      detection: cell('red', 'University states Turnitin AI detector is in operational use.', 'University has been using Turnitin\'s AI detector tool', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'University has been using Turnitin\'s AI detector tool', 'University policy and actions - University of Melbourne', 'research files', 'Detection tooling actively used.'),
+      training: cell('green', 'Commencing students complete integrity modules that include GenAI guidance.', 'complete academic integrity education modules which include guidance on the appropriate use of generative AI', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'complete academic integrity education modules', 'University policy and actions - University of Melbourne', 'research files', 'Structured training requirement.'),
+      media: cell('yellow', 'Policy scope explicitly includes graphics/audio/video AI outputs.', 'including text, graphics, audio and video', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'including text, graphics, audio and video', 'University policy and actions - University of Melbourne', 'research files', 'Media modalities explicitly in scope.'),
+      citation: cell('yellow', 'Assessment policy requires proper citation of AI-generated material.', 'appropriately acknowledged and cited', 'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions', 'appropriately acknowledged and cited', 'University policy and actions - University of Melbourne', 'research files', 'Citation requirement.'),
+      penalties: cell('red', 'Improper technology use in assessment is treated as misconduct.', 'Knowingly submitting work for assessment that has been produced by a third party', 'https://msd.unimelb.edu.au/belt/quality/ethics-and-culture/student-academic-integrity/use-of-technology', 'produced by a third party', 'Use of technology and academic integrity - University of Melbourne', 'research files', 'Misconduct framing used conservatively.'),
+    }
+  },
+  {
+    uni: 'Technical University of Munich', country: 'International', overrides: {
+      training: cell('green', 'AI strategy commits to student AI skill development in curriculum.', 'Students will acquire essential skills in areas such as data analysis, machine learning, and algorithm development.', 'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy', 'Students will acquire essential skills', 'TUM issues a comprehensive AI strategy', 'research files', 'Institution strategy-level evidence.'),
+      tools: cell('green', 'University acquired Copilot and Grammarly licenses for members.', 'acquired licenses for Microsoft Copilot and Grammarly', 'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy', 'acquired licenses for Microsoft Copilot and Grammarly', 'TUM issues a comprehensive AI strategy', 'research files', 'Institution-provided tooling.'),
+      faculty: cell('yellow', 'Lecturers are encouraged to set course-level AI usage rules.', 'Lecturers are encouraged to establish rules and guidelines', 'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy', 'Lecturers are encouraged to establish rules and guidelines', 'TUM issues a comprehensive AI strategy', 'research files', 'Guidance language rather than mandate.'),
+      privacy: cell('yellow', 'Strategy explicitly references data protection as an ethical concern.', 'Addressing ethical issues such as bias in AI algorithms, data protection', 'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy', 'data protection', 'TUM issues a comprehensive AI strategy', 'research files', 'High-level policy framing, not detailed restrictions.'),
+    }
+  }
+];
+
+let activeFilter = 'all';
+let searchVal = '';
+let sortKey = '';
+let sortDir = 1;
+
+function normalizeUrl(url) {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  return 'https://' + url.replace(/^\/*/, '');
+}
+
+function buildRows() {
+  return universities.map(u => {
+    const cells = {};
+    cols.forEach(c => { cells[c.key] = cell(); });
+    Object.keys(u.overrides).forEach(k => { cells[k] = u.overrides[k]; });
+    return { uni: u.uni, country: u.country, cells };
+  });
+}
+
+const rows = buildRows();
+
+function setFilter(v, btn) {
+  activeFilter = v;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function setSearch(v) {
+  searchVal = v.trim().toLowerCase();
+  render();
+}
+
+function severity(c) {
+  const order = { red: 4, yellow: 3, green: 2, blank: 1 };
+  return order[c] || 0;
+}
+
+function sortRows(list) {
+  const out = [...list];
+  if (!sortKey) return out.sort((a, b) => a.uni.localeCompare(b.uni));
+  return out.sort((a, b) => {
+    const av = sortKey === 'uni' ? a.uni : severity(a.cells[sortKey].c);
+    const bv = sortKey === 'uni' ? b.uni : severity(b.cells[sortKey].c);
+    if (av < bv) return -1 * sortDir;
+    if (av > bv) return 1 * sortDir;
+    return a.uni.localeCompare(b.uni);
+  });
+}
+
+function buildHead() {
+  const hr = document.getElementById('head-row');
+  hr.innerHTML = '';
+  const uniTh = document.createElement('th');
+  uniTh.className = 'uni-col';
+  uniTh.textContent = 'University';
+  uniTh.onclick = () => toggleSort('uni');
+  hr.appendChild(uniTh);
+
+  cols.forEach(c => {
+    const th = document.createElement('th');
+    th.innerHTML = c.label.replace('\n', '<br>');
+    th.onclick = () => toggleSort(c.key);
+    hr.appendChild(th);
+  });
+}
+
+function toggleSort(key) {
+  if (sortKey === key) {
+    sortDir *= -1;
+  } else {
+    sortKey = key;
+    sortDir = 1;
+  }
+  render();
+}
+
+function render() {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  let filtered = rows.filter(r => {
+    const isIndia = String(r.country || '').toLowerCase() === 'india';
+    if (activeFilter === 'India' && !isIndia) return false;
+    if (activeFilter === 'International' && isIndia) return false;
+    if (searchVal && !r.uni.toLowerCase().includes(searchVal)) return false;
+    return true;
+  });
+
+  const indiaRows = sortRows(filtered.filter(r => String(r.country || '').toLowerCase() === 'india'));
+  const intlRows = sortRows(filtered.filter(r => String(r.country || '').toLowerCase() !== 'india'));
+
+  function appendGroup(title, groupRows) {
+    if (!groupRows.length) return;
+    const gr = document.createElement('tr');
+    gr.innerHTML = '<td class="group-header" colspan="16">' + title + '</td>';
+    tbody.appendChild(gr);
+
+    groupRows.forEach(r => {
+      const tr = document.createElement('tr');
+      let html = '<td class="uni-name">' + r.uni + '</td>';
+      cols.forEach(c => {
+        const cc = r.cells[c.key];
+        const uniEsc = r.uni.replace(/'/g, "\\'");
+        html += '<td><div class="cell ' + cc.c + '" onclick="showPopup(\'' + uniEsc + '\',\'' + c.key + '\')"><div class="dot ' + cc.c + '"></div></div></td>';
+      });
+      tr.innerHTML = html;
+      tbody.appendChild(tr);
+    });
+  }
+
+  appendGroup('Indian Universities', indiaRows);
+  appendGroup('International Universities', intlRows);
+}
+
+function showPopup(uni, key) {
+  const row = rows.find(r => r.uni === uni);
+  if (!row) return;
+  const c = row.cells[key];
+  const badge = document.getElementById('m-badge');
+  badge.className = 'badge ' + c.c;
+  badge.textContent = labels[c.c];
+
+  document.getElementById('m-uni').textContent = uni;
+  document.getElementById('m-topic').textContent = cols.find(x => x.key === key).label.replace('\n', ' ');
+  document.getElementById('m-reason').textContent = c.reason || '';
+
+  const q = document.getElementById('m-quote');
+  if (c.quote) {
+    q.style.display = 'block';
+    q.textContent = '"' + c.quote + '"';
+  } else {
+    q.style.display = 'none';
+    q.textContent = '';
+  }
+
+  document.getElementById('m-title').textContent = c.sourceTitle || 'No source text found';
+  document.getElementById('m-origin').textContent = c.evidence || 'research files';
+  document.getElementById('m-search').textContent = c.searched || 'No additional search note.';
+
+  const btn = document.getElementById('m-src-btn');
+  const domain = document.getElementById('m-src-domain');
+  const normUrl = normalizeUrl(c.url);
+
+  if (normUrl) {
+    const frag = encodeURIComponent(c.phrase || (c.quote ? c.quote.slice(0, 70) : ''));
+    btn.href = normUrl + '#:~:text=' + frag;
+    btn.style.display = 'inline-block';
+    try {
+      domain.textContent = new URL(normUrl).hostname;
+    } catch {
+      domain.textContent = normUrl;
+    }
+  } else {
+    btn.style.display = 'none';
+    domain.textContent = 'No source URL for this blank cell.';
+  }
+
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('overlay')) {
+    document.getElementById('overlay').classList.remove('show');
+  }
+}
+
+buildHead();
+render();
+</script>
+</body>
+</html>

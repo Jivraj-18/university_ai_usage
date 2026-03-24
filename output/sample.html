@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University AI Policy Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; color: #1a1a1a; background: #f9f9f7; }
+  .wrap { padding: 1.5rem; overflow-x: auto; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 16px; }
+  .controls { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .filter-btn { padding: 5px 12px; border: 0.5px solid #ccc; border-radius: 8px; background: transparent; cursor: pointer; font-size: 12px; color: #555; }
+  .filter-btn.active { background: #f0f0ee; color: #1a1a1a; border-color: #999; }
+  input[type=text] { padding: 5px 10px; font-size: 12px; border-radius: 8px; border: 0.5px solid #ccc; flex: 1; max-width: 200px; outline: none; }
+  input[type=text]:focus { border-color: #999; }
+  .legend { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #666; }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  table { border-collapse: collapse; min-width: 100%; font-size: 12px; }
+  th { background: #f0f0ee; padding: 8px 10px; text-align: left; border: 0.5px solid #e0e0dc; font-weight: 500; white-space: nowrap; cursor: pointer; color: #555; font-size: 11px; }
+  th:hover { color: #1a1a1a; }
+  th.uni-col { min-width: 180px; }
+  td { border: 0.5px solid #e0e0dc; padding: 0; text-align: center; width: 64px; }
+  td.uni-name { text-align: left; padding: 8px 10px; white-space: nowrap; font-size: 12px; color: #1a1a1a; background: #fff; }
+  td.group-header { background: #f5f5f2; padding: 6px 10px; font-weight: 500; font-size: 11px; color: #666; text-align: left; letter-spacing: 0.04em; }
+  .cell { width: 100%; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: opacity 0.15s; }
+  .cell:hover { opacity: 0.7; }
+  .cell.green { background: #C0DD97; }
+  .cell.yellow { background: #FAC775; }
+  .cell.red { background: #F7C1C1; }
+  .cell.blank { background: #f0f0ee; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.green { background: #3B6D11; }
+  .dot.yellow { background: #854F0B; }
+  .dot.red { background: #A32D2D; }
+  .dot.blank { background: #bbb; }
+
+  /* Overlay */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 100; align-items: center; justify-content: center; }
+  .overlay.show { display: flex; }
+  .modal { background: #fff; border-radius: 12px; border: 0.5px solid #ddd; padding: 1.25rem; max-width: 440px; width: 90%; position: relative; box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+  .modal-close { position: absolute; top: 10px; right: 12px; background: none; border: none; cursor: pointer; font-size: 16px; color: #999; }
+  .modal-close:hover { color: #333; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 500; margin-bottom: 10px; }
+  .badge.green { background: #EAF3DE; color: #27500A; }
+  .badge.yellow { background: #FAEEDA; color: #633806; }
+  .badge.red { background: #FCEBEB; color: #791F1F; }
+  .badge.blank { background: #f0f0ee; color: #666; }
+  .modal h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .modal .topic { font-size: 11px; color: #888; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .reason { font-size: 12px; color: #555; margin-bottom: 10px; line-height: 1.6; }
+  .quote { border-left: 2px solid #ddd; padding: 8px 12px; font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 12px; font-style: italic; background: #fafaf8; border-radius: 0 4px 4px 0; }
+  .source-label { font-size: 10px; color: #aaa; margin-bottom: 6px; }
+  .src-btn { display: inline-block; padding: 6px 14px; border: 0.5px solid #ccc; border-radius: 8px; font-size: 11px; text-decoration: none; color: #185FA5; cursor: pointer; background: transparent; }
+  .src-btn:hover { background: #f0f0ee; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>University AI Policy Dashboard</h1>
+  <p class="subtitle">Sample — 8 universities × 12 policy metrics. Click any cell to see the source evidence.</p>
+
+  <div class="controls">
+    <button class="filter-btn active" onclick="filter('all',this)">All</button>
+    <button class="filter-btn" onclick="filter('India',this)">India</button>
+    <button class="filter-btn" onclick="filter('International',this)">International</button>
+    <input type="text" placeholder="Search university..." oninput="search(this.value)" />
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#3B6D11"></div>Explicitly allowed</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#854F0B"></div>Allowed with conditions</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#A32D2D"></div>Prohibited</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#bbb"></div>Not mentioned</div>
+  </div>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th class="uni-col">University</th>
+        <th>Homework</th>
+        <th>Exams</th>
+        <th>Thesis</th>
+        <th>Disclosure</th>
+        <th>Penalties</th>
+        <th>Faculty<br>Discretion</th>
+        <th>Inst.<br>Tools</th>
+        <th>Research</th>
+        <th>Detection</th>
+        <th>Training</th>
+        <th>Media<br>Gen</th>
+        <th>Data<br>Privacy</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="document.getElementById('overlay').classList.remove('show')">✕</button>
+    <div class="badge" id="m-badge"></div>
+    <h3 id="m-uni"></h3>
+    <div class="topic" id="m-topic"></div>
+    <div class="reason" id="m-reason"></div>
+    <div class="quote" id="m-quote"></div>
+    <div class="source-label" id="m-src-label"></div>
+    <a class="src-btn" id="m-src-btn" target="_blank">Open source &amp; highlight text ↗</a>
+  </div>
+</div>
+
+<script>
+const colKeys = ['homework','exams','thesis','disclosure','penalties','faculty','tools','research','detection','training','media','privacy'];
+const colLabels = {
+  homework:'Homework', exams:'Exams', thesis:'Thesis', disclosure:'Disclosure',
+  penalties:'Penalties', faculty:'Faculty Discretion', tools:'Inst. Tools',
+  research:'Research', detection:'Detection', training:'Training',
+  media:'Media Generation', privacy:'Data Privacy'
+};
+
+const data = [
+  {uni:'IIT Bombay', country:'India', cells:{
+    homework:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    exams:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    thesis:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    disclosure:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    penalties:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    faculty:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    tools:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    research:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    detection:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    training:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+    privacy:{c:'blank',reason:'No institution-wide policy found.',quote:'',url:'',phrase:''},
+  }},
+  {uni:'IIT Delhi', country:'India', cells:{
+    homework:{c:'red',reason:'Course-level prohibition on LLM use for code generation found.',quote:'Please note that the use of large language models such as ChatGPT to generate code, is not allowed. Taking and using code from the Internet is also not allowed.',url:'https://www.cse.iitd.ac.in',phrase:'use of large language models such as ChatGPT'},
+    exams:{c:'blank',reason:'Not mentioned in available sources.',quote:'',url:'',phrase:''},
+    thesis:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    disclosure:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    penalties:{c:'blank',reason:'Not mentioned at institution level.',quote:'',url:'',phrase:''},
+    faculty:{c:'yellow',reason:'Course-level policy implies instructor-set rules per course.',quote:'Please note that the use of large language models such as ChatGPT to generate code, is not allowed.',url:'https://www.cse.iitd.ac.in',phrase:'use of large language models such as ChatGPT'},
+    tools:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    research:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    detection:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    training:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+  }},
+  {uni:'Ashoka University', country:'India', cells:{
+    homework:{c:'yellow',reason:'Policy under development; interim guidance advises caution.',quote:'',url:'',phrase:''},
+    exams:{c:'red',reason:'Exams are conducted without AI tools.',quote:'',url:'',phrase:''},
+    thesis:{c:'yellow',reason:'Requires prior disclosure to supervisor.',quote:'',url:'',phrase:''},
+    disclosure:{c:'yellow',reason:'Students must declare AI use in submitted work.',quote:'',url:'',phrase:''},
+    penalties:{c:'red',reason:'Unauthorized AI use treated as academic misconduct.',quote:'',url:'',phrase:''},
+    faculty:{c:'green',reason:'Faculty set their own AI rules per course.',quote:'',url:'',phrase:''},
+    tools:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    research:{c:'yellow',reason:'Allowed with disclosure.',quote:'',url:'',phrase:''},
+    detection:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    training:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+  }},
+  {uni:'MIT', country:'International', cells:{
+    homework:{c:'yellow',reason:'Allowed but students are responsible for accuracy of AI-generated content.',quote:'You are responsible for the accuracy of any information you publish, including AI-generated content.',url:'https://ist.mit.edu/ai-guidance',phrase:'responsible for the accuracy of any information you publish'},
+    exams:{c:'blank',reason:'Not explicitly addressed in IS&T guidance.',quote:'',url:'',phrase:''},
+    thesis:{c:'yellow',reason:'Not recommended for use with medium/high risk MIT information.',quote:'We do not recommend using publicly available GenAI tools not subject to an Institute licensing agreement for your MIT research and educational activities.',url:'https://ist.mit.edu/ai-guidance',phrase:'not subject to an Institute licensing agreement'},
+    disclosure:{c:'yellow',reason:'Transparency and disclosure strongly encouraged.',quote:'Be transparent about your use of generative AI tools when sharing results with others.',url:'https://ist.mit.edu/ai-guidance',phrase:'transparent about your use of generative AI tools'},
+    penalties:{c:'blank',reason:'Not explicitly stated in guidance document.',quote:'',url:'',phrase:''},
+    faculty:{c:'blank',reason:'Not mentioned in IS&T guidance.',quote:'',url:'',phrase:''},
+    tools:{c:'green',reason:'MIT licenses specific GenAI tools for community use.',quote:'IS&T licenses several generative AI tools for use by the MIT community.',url:'https://ist.mit.edu/ai-guidance',phrase:'IS&T licenses several generative AI tools'},
+    research:{c:'yellow',reason:'Allowed with caveats around data risk classification.',quote:'We do not recommend using publicly available GenAI tools not subject to an Institute licensing agreement for your MIT research and educational activities.',url:'https://ist.mit.edu/ai-guidance',phrase:'not subject to an Institute licensing agreement for your MIT research'},
+    detection:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    training:{c:'blank',reason:'Not mentioned in this document.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'red',reason:'High risk data must not be entered into any GenAI tool.',quote:'No Generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information.',url:'https://ist.mit.edu/ai-guidance',phrase:'approved for use with High Risk MIT information'},
+  }},
+  {uni:'University of Toronto', country:'International', cells:{
+    homework:{c:'red',reason:'Default is prohibited unless instructor explicitly permits.',quote:'Students are not allowed to use generative AI in a course unless the instructor explicitly permits it.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'not allowed to use generative AI in a course unless'},
+    exams:{c:'red',reason:'Unauthorized use is an academic offence.',quote:'Use of generative AI tools when not permitted is considered an academic offence.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'considered an academic offence and can result'},
+    thesis:{c:'yellow',reason:'Allowed only with prior approval of supervisor and committee.',quote:'The use of generative AI tools in any aspect of researching or writing of the thesis must be done with the prior approval of the supervisor(s) and supervisory committee.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'prior approval of the supervisor(s) and supervisory committee'},
+    disclosure:{c:'yellow',reason:'Must cite and describe all AI tool use in thesis.',quote:'Careful attention must be paid in the thesis to appropriately citing and describing any use of generative AI tools in the research process.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'appropriately citing and describing any use of generative AI'},
+    penalties:{c:'red',reason:'Academic misconduct allegation raised by instructor.',quote:'Use of generative AI tools when not permitted is considered an academic offence and can result in an allegation of academic misconduct being raised by your instructor.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'allegation of academic misconduct being raised by your instructor'},
+    faculty:{c:'green',reason:'Instructor permission is the governing factor — implies faculty discretion.',quote:'Students are not allowed to use generative AI in a course unless the instructor explicitly permits it.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'unless the instructor explicitly permits it'},
+    tools:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    research:{c:'yellow',reason:'Allowed in research with supervisor approval.',quote:'The use of generative AI tools in any aspect of researching or writing of the thesis must be done with the prior approval of the supervisor(s).',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'prior approval of the supervisor(s) and supervisory committee'},
+    detection:{c:'red',reason:'University explicitly does not support AI detection tools.',quote:'U of T does not support the use of AI-detection tools.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'U of T does not support the use of AI-detection tools'},
+    training:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'red',reason:'Prohibits inputting private or confidential data.',quote:'Do not input any private, confidential or identifying information into generative AI.',url:'https://www.utm.utoronto.ca/academic-integrity/students/generative-ai',phrase:'Do not input any private, confidential or identifying information'},
+  }},
+  {uni:'University of Melbourne', country:'International', cells:{
+    homework:{c:'yellow',reason:'Allowed if acknowledged and cited per university policy.',quote:'If a student does use AI generated material in the preparation of their assessment submission, this must be appropriately acknowledged and cited.',url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:'appropriately acknowledged and cited in accordance with'},
+    exams:{c:'blank',reason:'Not explicitly addressed.',quote:'',url:'',phrase:''},
+    thesis:{c:'blank',reason:'Not explicitly addressed.',quote:'',url:'',phrase:''},
+    disclosure:{c:'yellow',reason:'Must be acknowledged and cited per Assessment and Results Policy.',quote:'If a student does use AI generated material in the preparation of their assessment submission, this must be appropriately acknowledged and cited in accordance with the Assessment and Results Policy (MPF1326).',url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:'Assessment and Results Policy (MPF1326)'},
+    penalties:{c:'blank',reason:'Not explicitly stated in this document.',quote:'',url:'',phrase:''},
+    faculty:{c:'green',reason:'Subject coordinator sets the rules per subject.',quote:'Your subject coordinator will set the rules on whether AI tools are permitted.',url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:'subject coordinator will set the rules on whether AI tools are permitted'},
+    tools:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    research:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    detection:{c:'red',reason:'Turnitin AI detector actively used since April 2023.',quote:"As of April 2023, the University has been using Turnitin's AI detector tool. The tool aims to identify passages potentially generated by AI.",url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:"University has been using Turnitin's AI detector tool"},
+    training:{c:'green',reason:'All commencing students must complete academic integrity modules covering AI.',quote:'As of Semester 1, 2024 all commencing coursework students are asked to complete academic integrity education modules which include guidance on the appropriate use of generative AI.',url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:'complete academic integrity education modules which include guidance'},
+    media:{c:'yellow',reason:'Policy explicitly mentions image, audio, video generation tools.',quote:'AI tools can now handle a wide range of input and output formats, including text, graphics, audio and video.',url:'https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions',phrase:'including text, graphics, audio and video'},
+    privacy:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+  }},
+  {uni:'NUS', country:'International', cells:{
+    homework:{c:'yellow',reason:'Allowed where permitted; no paraphrasing required if acknowledged.',quote:'Students do not have to paraphrase AI output where its use is permitted. In such cases, so long as they acknowledge the use of AI, they have not committed plagiarism.',url:'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf',phrase:'not have to paraphrase AI output where its use is permitted'},
+    exams:{c:'red',reason:'On-site proctored exams used when AI-free assessment is needed.',quote:'If there is a need to test whether you possess a certain knowledge or capability without access to AI tools, your instructors will continue to arrange for appropriate assessment settings (e.g., an on-site proctored exam or oral interview).',url:'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf',phrase:'on-site proctored exam or oral interview'},
+    thesis:{c:'blank',reason:'Not addressed in teaching and learning policy.',quote:'',url:'',phrase:''},
+    disclosure:{c:'yellow',reason:'Acknowledgement required to avoid plagiarism.',quote:'Generating an output and presenting it as your own work or idea without attribution… students do not have to paraphrase AI output where its use is permitted… so long as they acknowledge the use of AI, they have not committed plagiarism.',url:'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf',phrase:'acknowledge the use of AI, they have not committed plagiarism'},
+    penalties:{c:'blank',reason:'Not explicitly stated.',quote:'',url:'',phrase:''},
+    faculty:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    tools:{c:'green',reason:'NUS-approved tools must be used wherever NUS data is involved.',quote:'Wherever NUS data is involved, use NUS approved AI tools.',url:'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf',phrase:'NUS data is involved, use NUS approved AI tools'},
+    research:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    detection:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    training:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'yellow',reason:'Institutional tools required when NUS data is involved.',quote:'Wherever NUS data is involved, use NUS approved AI tools.',url:'https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf',phrase:'Wherever NUS data is involved'},
+  }},
+  {uni:'TU Munich', country:'International', cells:{
+    homework:{c:'blank',reason:'Not explicitly addressed in AI strategy press release.',quote:'',url:'',phrase:''},
+    exams:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    thesis:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    disclosure:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    penalties:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    faculty:{c:'yellow',reason:'Lecturers encouraged to set own AI rules per course.',quote:'Lecturers are encouraged to establish rules and guidelines regarding the use of generative artificial intelligence for assignments, projects and assessments in their courses.',url:'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy',phrase:'no universally applicable solutions, so clear communication between lecturers'},
+    tools:{c:'green',reason:'Microsoft Copilot and Grammarly licensed for all TUM members.',quote:'The university has acquired licenses for Microsoft Copilot and Grammarly.',url:'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy',phrase:'acquired licenses for Microsoft Copilot and Grammarly'},
+    research:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    detection:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    training:{c:'green',reason:'AI integration into curriculum and extracurricular programs.',quote:'Students will acquire essential skills in areas such as data analysis, machine learning, and algorithm development.',url:'https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy',phrase:'Students will acquire essential skills in areas such as data analysis'},
+    media:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+    privacy:{c:'blank',reason:'Not mentioned.',quote:'',url:'',phrase:''},
+  }},
+];
+
+let activeFilter = 'all';
+let searchVal = '';
+
+function filter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function search(v) {
+  searchVal = v.toLowerCase();
+  render();
+}
+
+function render() {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  let indiaShown = false, intlShown = false;
+
+  data.forEach(row => {
+    const isIndia = row.country === 'India';
+    if (activeFilter === 'India' && !isIndia) return;
+    if (activeFilter === 'International' && isIndia) return;
+    if (searchVal && !row.uni.toLowerCase().includes(searchVal)) return;
+
+    if (isIndia && !indiaShown) {
+      const gr = document.createElement('tr');
+      gr.innerHTML = `<td class="group-header" colspan="${colKeys.length + 1}">Indian Universities</td>`;
+      tbody.appendChild(gr);
+      indiaShown = true;
+    }
+    if (!isIndia && !intlShown) {
+      const gr = document.createElement('tr');
+      gr.innerHTML = `<td class="group-header" colspan="${colKeys.length + 1}">International Universities</td>`;
+      tbody.appendChild(gr);
+      intlShown = true;
+    }
+
+    const tr = document.createElement('tr');
+    let html = `<td class="uni-name">${row.uni}</td>`;
+    colKeys.forEach(k => {
+      const cell = row.cells[k];
+      html += `<td><div class="cell ${cell.c}" onclick="showPopup('${row.uni.replace(/'/g,"\\'")}','${k}')"><div class="dot ${cell.c}"></div></div></td>`;
+    });
+    tr.innerHTML = html;
+    tbody.appendChild(tr);
+  });
+}
+
+function showPopup(uni, col) {
+  const row = data.find(d => d.uni === uni);
+  if (!row) return;
+  const cell = row.cells[col];
+  const badge = document.getElementById('m-badge');
+  badge.className = 'badge ' + cell.c;
+  const labels = { green: 'Explicitly Allowed', yellow: 'Conditional / With Restrictions', red: 'Prohibited', blank: 'Not Mentioned' };
+  badge.textContent = labels[cell.c];
+  document.getElementById('m-uni').textContent = uni;
+  document.getElementById('m-topic').textContent = colLabels[col];
+  document.getElementById('m-reason').textContent = cell.reason;
+  const quoteEl = document.getElementById('m-quote');
+  quoteEl.style.display = cell.quote ? 'block' : 'none';
+  quoteEl.textContent = cell.quote ? '"' + cell.quote + '"' : '';
+  const btn = document.getElementById('m-src-btn');
+  const srcLabel = document.getElementById('m-src-label');
+  if (cell.url) {
+    const encoded = encodeURIComponent(cell.phrase || cell.quote.slice(0, 40));
+    btn.href = cell.url + '#:~:text=' + encoded;
+    btn.style.display = 'inline-block';
+    srcLabel.textContent = cell.url.replace('https://','').split('/')[0];
+    srcLabel.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+    srcLabel.style.display = 'none';
+  }
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('overlay')) {
+    document.getElementById('overlay').classList.remove('show');
+  }
+}
+
+render();
+</script>
+</body>
+</html>

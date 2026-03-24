@@ -1,0 +1,484 @@
+[
+  {
+    "university": "Indian Institute of Technology Bombay (IIT Bombay)",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "Searched IIT Bombay’s official website and subdomains for institute-wide or department-level policies or guidelines mentioning generative AI, ChatGPT, or AI tools in relation to student assignments, exams, theses, or academic integrity, and also checked recent institutional news about AI centres and certificate programmes; only programme descriptions and research/centre announcements were found, with no formal policy text on student use of AI between 2024 and 2026.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Indian Institute of Technology Delhi (IIT Delhi)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "statement-only",
+    "policy_url": "https://www.business-standard.com/education/news/iit-delhi-ai-assisted-work-disclosure-guidelines-2025-125052801555_1.html",
+    "policy_title": "Disclose any AI-assisted academic work: IIT-Delhi issues new guidelines",
+    "policy_last_updated": "2025-05-27",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "The Indian Institute of Technology (IIT)-Delhi has issued new guidelines encouraging students and faculty members to integrate artificial intelligence (AI) tools thoughtfully and responsibly into their academic pursuits, but has called for full disclosure of any such work.\nUnderscoring the importance of maintaining transparency and upholding academic integrity, the prestigious institution has made it mandatory for all individuals to explicitly disclose any work that has been generated, assisted, or influenced by AI tools.\n\"Any work or content generated with the assistance of AI tools should be fully disclosed to ensure transparency and maintain academic integrity,\" the guidelines stated.",
+        "ctrl_f_phrase": "Any work or content generated"
+      },
+      {
+        "topic_hint": "general",
+        "verbatim_text": "The new advisory emphasises that the use of AI should be approached with a clear understanding of its potential consequences to avoid any unintentional negative outcomes.\n\"GenAI tools are gaining significant traction in academic spaces, embraced by students, faculty members and staff alike for their ability to generate information that is contextually fitting in many instances.\nThe widespread adoption of these tools is prompting educators and administrators to reconsider how they reshape classroom teaching, design assignments and exams and determine more effective methods of assessment,\" IIT-Delhi Director Rangan Banerjee said in the advisory.",
+        "ctrl_f_phrase": "reconsider how they reshape classroom"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Technology Madras (IIT Madras)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "course-level",
+    "policy_url": "https://ae.iitm.ac.in/~nidish/courses/as3020/files/mod2/as3020_assignment2.pdf",
+    "policy_title": "AS3020*: Assignment 1 – Module 1: Design of Aircrafts (Course Assignment Instructions)",
+    "policy_last_updated": "2024-08-15",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "2. While resources on the internet may be used if necessary, no use of generative AI is permitted\nfor this assignment. Discussions among students is permitted for this assignment, but your\nsubmission must be your own work.",
+        "ctrl_f_phrase": "no use of generative AI is permitted"
+      },
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "You can use any other resources you may find online also, but you are not authorized to use\ngenerative AI tools.",
+        "ctrl_f_phrase": "you are not authorized to use"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Science Bangalore (IISc Bangalore)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.iisc.ac.in/wp-content/uploads/2024/03/Report-of-Committee-on-AI-Tools-for-Education-and-Research.pdf",
+    "policy_title": "Perspective and Policies for IISc – Emerging AI Tools for Education and Research",
+    "policy_last_updated": "2024-01-10",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "Summary\n-  AI tools have come here to stay.\nThey have positive effects as well as negative effects for \neducation, learning, and research\n-  IISc faculty members recognize this and are in favour of responsible use of AI tools for \nmaximizing the positives and minimizing the negatives.\n-  IISc students clearly want to use the AI tools and are looking forward to guidelines and training",
+        "ctrl_f_phrase": "IISc students clearly want to use"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "-  The committee has identified broad guidelines for creative, constructive, and responsible uses \nof AI tools for teaching and research\n-  Next step is to translate these guidelines into clear and transparent policies providing enough \nfreedom for faculty members to fine-tune",
+        "ctrl_f_phrase": "providing enough freedom for faculty"
+      },
+      {
+        "topic_hint": "research",
+        "verbatim_text": "IISc Student Survey (2 of 3)\n-  The majority of students felt that the institute should provide clear guidelines.\n-  Over 95% felt that the institute should allow the use of AI tools in research and teaching.\n-  Students were divided in what constituted appropriate use for coursework: a large fraction \n(40%) sought to allow free usage but with attribution, while some felt it was appropriate for",
+        "ctrl_f_phrase": "over 95% felt that the institute"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Management Ahmedabad (IIM Ahmedabad)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "statement-only",
+    "policy_url": "https://www.iima.ac.in/node/20841",
+    "policy_title": "How IIM-A is embracing GenAI in curriculum",
+    "policy_last_updated": "2024-06-10",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "Many educational institutions have banned their students from using Chat-GPT in classrooms.\nHowever, the Indian Institute of Management, Ahmedabad, found a way to make the tool ally.\nThe premier Indian business school has started using ChatGPT to generate class assignments.\nIn a marketing course for instance, it asks ChatGPT for answers and gets students to compare their answers.\nIt also gets ChatGPT to critique the students' viewpoint.",
+        "ctrl_f_phrase": "started using ChatGPT to generate class"
+      },
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "\"We know ChatGPT exists and students have access to it.\nTherefore, we are trying to teach them how to use the tool to query efficiently,\" explains Diptesh Ghosh, dean (programmes), IIM-A.\nThe business school has incorporated courses in its curriculum which talk about the use if AI and data sciences in business.\nIt is also offering a course on how AI is transforming logistics.",
+        "ctrl_f_phrase": "we are trying to teach them"
+      }
+    ]
+  },
+  {
+    "university": "University of Delhi (Delhi University)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "department-level",
+    "policy_url": "https://jsir.sanskrit.du.ac.in/about/ai-generated-content-policy.php",
+    "policy_title": "AI-Generated Content Policy – Journal of Sanskrit & Indic Studies",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "The *Journal of Sanskrit & Indic Studies* recognises the growing use of artificial intelligence (AI) tools in academic research and writing.\nThis policy is intended to provide clarity regarding the acceptable and responsible use of AI-assisted technologies in the preparation and submission of manuscripts to the journal.\nThe policy applies to all submissions, including research articles, review essays, and other scholarly contributions submitted for consideration.",
+        "ctrl_f_phrase": "recognises the growing use of artificial"
+      },
+      {
+        "topic_hint": "research",
+        "verbatim_text": "Authors may use AI-based tools in a limited and responsible manner to support the preparation of their manuscripts, provided that such use does not compromise scholarly integrity or originality.\n- Language editing, grammar correction, and stylistic refinement.\n- Formatting assistance and structural suggestions.\n- Preliminary summarisation or paraphrasing for internal drafting purposes.",
+        "ctrl_f_phrase": "limited and responsible manner to support"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "The journal does not permit the use of AI tools in ways that undermine academic authorship, originality, or accountability.\n- Submission of manuscripts substantially generated by AI without human authorship.\n- Use of AI tools to fabricate data, references, citations, or sources.\n- Use of AI to generate translations or interpretations of primary Sanskrit texts without scholarly verification.\n- Attribution of authorship or intellectual responsibility to AI systems.",
+        "ctrl_f_phrase": "does not permit the use of AI tools"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "Authors are required to disclose the use of AI-assisted tools in the preparation of their manuscripts, where such use extends beyond routine language or formatting assistance.\nDisclosure may be made in a brief statement at the time of submission.\nFailure to disclose relevant AI use may be treated as a breach of publication ethics.",
+        "ctrl_f_phrase": "Failure to disclose relevant AI use"
+      }
+    ]
+  },
+  {
+    "university": "Jadavpur University",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "Searched Jadavpur University’s main site and uploaded reports for \"generative AI\", \"ChatGPT\", \"AI tools\", and academic integrity or examination rules, and reviewed available annual reports and course documents; no policy or guideline text between 2024 and 2026 referring specifically to student use of AI tools in assignments, exams, theses, or research could be located.", 
+    "raw_excerpts": []
+  },
+  {
+    "university": "Birla Institute of Technology & Science, Pilani (BITS Pilani)",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.bits-pilani.ac.in/wp-content/uploads/BITS-Pilani-Institute-Data-Privacy-Policy.pdf",
+    "policy_title": "BIRLA INSTITUTE OF TECHNOLOGY AND SCIENCE, PILANI – DATA PRIVACY POLICY",
+    "policy_last_updated": "2025-01-01",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "institutional_tools",
+        "verbatim_text": "4.5.2 Where Personal Data is used as a data input for any generative AI models, safeguards \nmust be put in place such that the Personal Data is not used to train the model (unless \nprior written consent is taken from the Data Principals for the same), and the use is\nstrictly in accordance with the applicable privacy laws . For this reason, one should not \nuse any AI (Artificial Intelligence) tools similar to but not limited to ChatGPT, CoPilot \netc., wherever personal data/sensitive/confidential data is involved, without explicit \napproval from the relevant Institute’s information security team or the BITS Pilani IT",
+        "ctrl_f_phrase": "one should not use any AI"
+      }
+    ]
+  },
+  {
+    "university": "Manipal Institute of Technology (MIT Manipal, Manipal Academy of Higher Education)",
+    "country": "India",
+    "policy_found": false,
+    "policy_scope": "none",
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "Searched MIT/MAHE sites for \"generative AI\", \"ChatGPT\", \"AI tools\" with terms like policy, academic integrity, examination, and plagiarism, and reviewed news and workshop pages (including a 2024 workshop titled \"Generative AI for Educators in Higher Education\"); no formal institute-wide or department-level rules on student use of AI for coursework, exams, theses, or research were found for 2024–2026.", 
+    "raw_excerpts": []
+  },
+  {
+    "university": "Ashoka University",
+    "country": "India",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://my.ashoka.edu.in/SIS/UploadedFile/OrientationMaterial/Policies_1b312936-8ec3-4aae-bcc8-3bbf03b57d6e.pdf",
+    "policy_title": "Academic Integrity Policy – Ashoka University, Office of Academic Affairs",
+    "policy_last_updated": "2021-09-21",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "Violating these standards not only deprives the student of \nvaluable learning experiences, it is also a very serious offence.\nIt is deeply unethical\n…\nV. \nAdjudication of Reported Violations of Academic Integrity \nViolations of academic integrity standards are addressed as per the procedure \nspecified below.\nThis procedure involves the student, the faculty member, the OAA \nand may involve the Academic Integrity Committee (AIC) and the student’s faculty \nmentor or academic advisor.",
+        "ctrl_f_phrase": "Violations of academic integrity standards"
+      },
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "Keeping up with Ashoka University’s vision of being mission-driven and delivering excellence, recently, the Centre for Writing and Communication (CWC) introduced an innovative digital learning resource: “Introductory Course on Academic Integrity & Ethics”.\nThis course is primarily aimed at undergraduate students but will soon be made available to all within the Ashoka community.\n…\nA section dedicated to the potential uses and misuse of AI-powered language models has been incorporated to address the ethical concerns over the usage of AI in academic writing and research.",
+        "ctrl_f_phrase": "potential uses and misuse of AI-powered"
+      },
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "**CWC’s inaugural online course includes modules on academic integrity, credible sources, citations (including AI-powered texts), and summary/paraphrase.**\nA significant milestone for pedagogic research and training at CWC, has been the launch of its online teaching resource, the “Introductory Course on Academic Integrity & Ethics’”.",
+        "ctrl_f_phrase": "including AI-powered texts"
+      }
+    ]
+  },
+  {
+    "university": "Massachusetts Institute of Technology (MIT)",
+    "country": "United States",
+    "policy_found": true,
+    "policy_scope": "faculty-level",
+    "policy_url": "https://tll.mit.edu/teaching-resources/course-design/gen-ai-your-course/teaching-learning-with-chatgpt-opportunity-or-quagmire-part-iii/",
+    "policy_title": "Teaching & Learning with ChatGPT: Opportunity or Quagmire? Part III",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "The Teaching + Learning Lab recommends that you clearly state your policy on the use of generative AI in the academic integrity statement on your syllabus.\nNote that OpenAI’s terms of use include the following among its restrictions: users may not “represent that output from the Services was human-generated when it is not.”",
+        "ctrl_f_phrase": "clearly state your policy on the use"
+      },
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "## The use of generative AI is prohibited in the subject\nSince a central goal of this subject is to help you become independent and critical thinkers, you are discouraged from using AI tools to create [SPECIFY: TEXT | CODE | EQUATIONS | VIDEO | AUDIO | IMAGES] in your work (assignments, activities, responses, etc).\nAny work submitted using AI tools will be treated as though it was plagiarized.\nIf any part of this is confusing or uncertain, please reach out to me for a conversation before submitting your work.",
+        "ctrl_f_phrase": "Any work submitted using AI tools"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "## The limited use of generative AI is permitted with proper citation\n**Example 1**: Since a central goal of this subject is to help you become independent and critical thinkers, you are discouraged from the *extensive use* of generative AI tools to create (SPECIFY: TEXT | CODE | EQUATIONS | VIDEO | AUDIO | IMAGES) as part of your work.\nIf you do use AI-generated content in your assignments, you must c",
+        "ctrl_f_phrase": "If you do use AI-generated content"
+      }
+    ]
+  },
+  {
+    "university": "Stanford University",
+    "country": "United States",
+    "policy_found": true,
+    "policy_scope": "course-level",
+    "policy_url": "https://cs221.stanford.edu",
+    "policy_title": "CS221: Artificial Intelligence: Principles and Techniques – Generative AI Policy",
+    "policy_last_updated": "2024-12-31",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "**Generative AI Policy:** Each student is expected to submit their own solutions to the CS221 homeworks.\nYou may use generative AI tools such as ChatGPT as you would use a human collaborator.\nThis means that you may *not* directly ask\ngenerative AI tools for answers or copy solutions, and you must acknowledge generative AI tools as collaborators.\nAdditionally, you may not use generative AI tools to \"check\" your work, even if you wrote it yourself, as this is equivalent to having another student look at your answers.\nThe use of generative AI tools to substantially complete an assignment or exam (e.g. by directly copying) is prohibited and will result in honor code violations.",
+        "ctrl_f_phrase": "Each student is expected to submit"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "**Honor Code Violations:** Anyone violating the honor code policy will be referred to the Office of Community Standards.\nIf you think you violated the policy (it can happen, especially under time pressure!),\nplease reach out to us; the consequences will be much less severe than if we approach you.",
+        "ctrl_f_phrase": "Anyone violating the honor code policy"
+      }
+    ]
+  },
+  {
+    "university": "Harvard University",
+    "country": "United States",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://oue.fas.harvard.edu/faculty-resources/generative-ai-guidance/",
+    "policy_title": "Generative AI Guidance – Office of Undergraduate Education",
+    "policy_last_updated": "2025-01-01",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "## Policies for the use of AI in courses\nAll faculty are required to inform students of the policies governing generative AI use in class.\nWhether students in your course are forbidden from using ChatGPT or expected to explore its limits, a policy helps ensure that your expectations for appropriate interaction with generative AI tools are clear to students.\nOnce you decide on a policy, make sure you articulate it clearly for your students, so that they know what is expected of them.\nMore specifically, **you should post your policy on your Canvas site**.",
+        "ctrl_f_phrase": "All faculty are required to inform"
+      },
+      {
+        "topic_hint": "exams",
+        "verbatim_text": "A fully-encouraging draft policy:\n> *This course encourages students to explore the use of generative artificial intelligence (GAI) tools such as ChatGPT for all assignments and assessments.\nAny such use must be appropriately acknowledged and cited.\nIt is each student’s responsibility to assess the validity and applicability of any GAI output that is submitted; you bear the final responsibility.\nViolations of this policy will be considered academic misconduct.\nWe draw your attention to the fact that different classes at Harvard could implement different AI policies, and it is the student’s responsibility to conform to expectations for each course.\n*",
+        "ctrl_f_phrase": "encourages students to explore the use"
+      },
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "A fully-prohibiting draft policy:\n> *We expect that all work students submit for this course will be their own.\nIn instances when collaborative work is assigned, we expect for the assignment to list all team members who participated.\nWe specifically forbid the use of ChatGPT or any other generative artificial intelligence (AI) tools at all stages of the work process, including preliminary ones.\nViolations of this policy will be considered academic misconduct.\nWe draw your attention to the fact that different classes at Harvard could implement different AI policies, and it is the student’s responsibility to conform to expectations for each course.\n*",
+        "ctrl_f_phrase": "We specifically forbid the use of ChatGPT"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "Mixed draft policy:\n> *Certain assignments in this course will permit or even encourage the use of generative artificial intelligence (GAI) tools such as ChatGPT.\nThe default is that such use is disallowed unless otherwise stated.\nAny such use must be appropriately acknowledged and cited.\nIt is each student’s responsibility to assess the validity and applicability of any GAI output that is submitted; you bear the final responsibility.\nViolations of this policy will be considered academic misconduct.\nWe draw your attention to the fact that different classes at Harvard could implement different AI policies, and it is the student’s responsibility to conform to expectations for each course.\n*",
+        "ctrl_f_phrase": "The default is that such use is disallowed"
+      }
+    ]
+  },
+  {
+    "university": "University of Oxford",
+    "country": "United Kingdom",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools",
+    "policy_title": "Guidance on safe and responsible use of Gen AI tools",
+    "policy_last_updated": "2025-09-21",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "The aim of this guidance is to help you use GenAI tools safely and responsibly, so you feel confident about exploring different ways of using this technology to support your learning.\nGenerative Artificial Intelligence (GenAI) is a fast-evolving technology and, during your time at Oxford, the University wants to enable and support the safe and productive use of these tools that will be important in your future.",
+        "ctrl_f_phrase": "enable and support the safe and productive"
+      },
+      {
+        "topic_hint": "research",
+        "verbatim_text": "### Use in research\nAll research undertaken by academic staff and students, including by postgraduate students, must meet the expectations in the Policy for using Generative AI in Research: guidelines for researchers and professional staff.\nSubstantive use of GenAI should be declared whenever a stand-alone AI tool is used (such as ChatGPT Edu), but not where GenAI functionality is embedded within existing software.\n**Substantive use ** of GenAI by students who are conducting research as part of a graduate research programme is defined as:\n- interpreting and analysing data (including audio and image files) and texts,\n- undertaking a literature review or translation,\n- identifying research gaps,\n- formulating research aims,\n- developing hypotheses,\n- assisting with generating ideas or to develop one’s own thinking,\n- generating code and synthetic data,\n- undertaking transcription of interviews, meetings etc.\nto save time and effort rather than overcoming barriers (see exclusions below)\n- producing documents using other people’s work or from transcripts or recordings.",
+        "ctrl_f_phrase": "Substantive use of GenAI should be declared"
+      },
+      {
+        "topic_hint": "institutional_tools",
+        "verbatim_text": "You may make use of University-supported generative AI tools (e.g. ChatGPT Edu, Google Gemini, Notebook LM and Copilot Chat) to develop your academic skills and to support your studies.\nThis should be done in consultation with your tutors, faculty, or department, and you should always follow their advice in relation to how they expect AI tools to be used (or not used) for different tasks.\nThese tools are accessed via your University Single Sign-On (SSO) account.",
+        "ctrl_f_phrase": "You may make use of University-supported generative AI tools"
+      }
+    ]
+  },
+  {
+    "university": "University of Cambridge",
+    "country": "United Kingdom",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://blendedlearning.cam.ac.uk/artificial-intelligence-and-education/using-generative-ai",
+    "policy_title": "Using Generative AI – Guidance for Students",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "# Using Generative AI\n## Guidance for Students\nStudents are permitted to make appropriate use of GenAI tools to support their personal study, research and formative work, however, due to differences between disciplines across the University, you should always consult local guidance (e.g., from your department, faculty, college etc.)\nMore specific guidance around the use of GenAI in assessments is available.",
+        "ctrl_f_phrase": "Students are permitted to make appropriate use of GenAI"
+      },
+      {
+        "topic_hint": "media_generation",
+        "verbatim_text": "|LLM Tool Use|Description|\n|--|--|\n|Interpret Images|The software can “read”, interpret, and communicate the contents of an image including text.|\n|Image Generation|The software can generate images and diagrams to varying degrees of accuracy.|\n|Mathematical Problems|The software can be used to explain solutions to mathematical problems and, in some cases, provide solutions.|\n|Informed Feedback|The software can provide feedback on a piece of work, this can reference criteria and rubrics if provided.|\n|Inspiration & Direction Setting|The software can suggest sentences or paragraphs which are used to inspire a student’s own line of thought.|",
+        "ctrl_f_phrase": "The software can generate images and diagrams"
+      },
+      {
+        "topic_hint": "exams",
+        "verbatim_text": "GenAI is a fast-moving target, and it is increasingly being built into everyday tools we are already familiar with.\nPowerpoint can suggest nice ways of laying out your presentations, and Grammarly, formerly a grammar checking tool, has had an AI-makeover and now claims it can make your writing ‘more convincing’, amongst other things.\nSo some students are raising questions about where the line is between inappropriate and appropriate use of these tools.\n**Let’s keep it simple:** spell-checkers are fine.\nTools which highlight poor grammar (like the old-style Word grammar checkers) are fine.\nAnything which actually writes or edits your writing for you is not.\n**Under no circumstances should the text generated by such AI-assisted tools be presented as your own work.**\n- Doing this in assessed work constitutes academic misconduct.\nWhile we are thinking actively about how we might in future engage with AI in diverse forms of teaching and assessment, zero-AI assessments (such as invigilated exams) will likely remain a core part of our assessment landscape going forward.",
+        "ctrl_f_phrase": "Under no circumstances should the text generated"
+      }
+    ]
+  },
+  {
+    "university": "ETH Zürich (ETH Zurich)",
+    "country": "Switzerland",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "policy_title": "Academic Integrity – AI in Education",
+    "policy_last_updated": "2026-02-09",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general",
+        "verbatim_text": "In the age of generative artificial intelligence, it is all the more important to uphold academic integrity at all times by ensuring that lecturers, students and staff adhere to the principles of responsibility, transparency and fairness.",
+        "ctrl_f_phrase": "In the age of generative artificial intelligence"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "- Be explicit about which content or parts of materials and work have been created with the help of generative AI.\n- Create transparency regarding the use of AI-based tools in lessons.\n- Discuss the use of GenAI for feedback and assessment openly.\nIt is important to respect the privacy and copyright of the content being worked with.",
+        "ctrl_f_phrase": "Be explicit about which content or parts"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "If AI tools are used contrary to the lecturer's instructions, the existing processes continue to apply.\nViolations such as the use of unauthorised tools or failure to disclose their use will be subject to disciplinary action (see also external page Disziplinarverordnung ETH Zurich).",
+        "ctrl_f_phrase": "Violations such as the use of unauthorised tools"
+      }
+    ]
+  },
+  {
+    "university": "National University of Singapore (NUS)",
+    "country": "Singapore",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://libguides.nus.edu.sg/new2nus/acadintegrity",
+    "policy_title": "Academic Integrity Essentials – A General Message to Our Students on the Use of AI Tools",
+    "policy_last_updated": "2024-05-01",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "SECOND , note that normal academic rules continue to apply.\nAs provided in the Code of Student Conduct :nt####du#### The University takes a strict view of cheating in any form, deceptive fabrication, plagiarism and violation of intellectual property and copyright laws.\nAny student who is found to have engaged in such misconduct will be subject to disciplinary action by the University.\nU####rs#### In this regard, representing an AI’s output as your own work is plagiarism.\n(See “ Guidelines on the Use of AI Tools for Academic Work ”.)",
+        "ctrl_f_phrase": "representing an AI’s output as your own work is plagiarism"
+      },
+      {
+        "topic_hint": "faculty_discretion",
+        "verbatim_text": "2.\nCHECK WITH YOUR INSTRUCTORS ON PROPER USES OF AI TOOLS O#### T#### Whether or not using an AI tool in a particular way is allowable depends on the learning purposes of the course and the targeted outcomes of the assignment.\nSome possible legitimate uses include:se####c- #### Gathering information and looking up explanations for basic concepts.i- #### Generating output for critique and analysis, for self-learning, or to compare against one’s work for self-evaluation and improvement.i- #### Help with proofreading and editing writing work.",
+        "ctrl_f_phrase": "Whether or not using an AI tool in a particular way"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "3.\nACKNOWLEDGING YOUR USE OF AIUR#### O#### If you completed any work with the aid of an AI tool, assuming a setting in which the instructor gave permission for such tools to be used, you should always acknowledge the use.\nIn fact, if you are ever in doubt, it is always a good idea to declare your use of a tool.\nUsing the outputs of an AI tool without proper acknowledgement is equivalent to lifting or paraphrasing a paragraph from a source without citation and attracts the same sanctions.e #### You can give this acknowledgement through a note or “methods section” at the end of the assignment explaining, e.g., which AI tools were used, in which parts of the process they were used, what were the prompts used to generate results, and what you did with the outputs to add value.",
+        "ctrl_f_phrase": "Using the outputs of an AI tool without proper acknowledgement"
+      }
+    ]
+  },
+  {
+    "university": "University of Toronto",
+    "country": "Canada",
+    "policy_found": true,
+    "policy_scope": "institution-wide",
+    "policy_url": "https://www.utm.utoronto.ca/academic-integrity/students/generative-ai",
+    "policy_title": "Generative AI and Academic Integrity – UTM",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "## UofT’s Policy on Generative AI\n**The University of Toronto takes the stance that students are not allowed to use generative AI in a course unless the instructor explicitly permits it.\n**\nInstructors design their assessments to help students develop important skills for subsequent courses and for your future career, so unauthorized use of aids like generative AI can hinder your learning.\nSubmitting your own, authentic work also provides TAs and instructors with a way to gauge your progress, which allows them to provide valuable feedback to help you improve.",
+        "ctrl_f_phrase": "students are not allowed to use generative AI"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "By failing to comply with the instructor’s specific instructions that you not use generative AI tools in writing your term paper, you have knowingly used an unauthorized aid in preparing your assignment.\nAny student using an unauthorized aid has committed an offence under the University’s Code of Behaviour on Academic Matters, and may be sanctioned accordingly.\nBe aware that the University expects students to complete their own work, without any outside assistance from another person, tutor, or technology tool, unless otherwise specified by your instructor.",
+        "ctrl_f_phrase": "Any student using an unauthorized aid has committed an offence"
+      },
+      {
+        "topic_hint": "thesis",
+        "verbatim_text": "The FAQs below outline important considerations for graduate students, supervisors, supervisory committees, and graduate units on the use of generative AI tools in graduate student research, thesis writing, and other key academic milestones while upholding the core principles of academic quality, research integrity, and transparency.\nThe FAQs cover requirements both for approval and for documentation of the use of generative AI tools in graduate-level scholarly activities, as well as risks and other considerations in using generative AI in graduate-level scholarly activities.",
+        "ctrl_f_phrase": "use of generative AI tools in graduate student research"
+      }
+    ]
+  },
+  {
+    "university": "The University of Melbourne",
+    "country": "Australia",
+    "policy_found": true,
+    "policy_scope": "faculty-level",
+    "policy_url": "https://msd.unimelb.edu.au/belt/quality/ethics-and-culture/student-academic-integrity/use-of-technology",
+    "policy_title": "Unauthorised or undisclosed use of technology (including genAI)",
+    "policy_last_updated": "2025-09-08",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework",
+        "verbatim_text": "*Elliott is using content generated by AI software in their assignment submission without appropriately acknowledging or citing their use of the tool.*\nThe increasing availability of generative artificial intelligence tools has opened new possibilities for academic misconduct.\nAlongside traditional sources for plagiarism and for contract cheating, students now might also access material generated by AI tools.",
+        "ctrl_f_phrase": "has opened new possibilities for academic misconduct"
+      },
+      {
+        "topic_hint": "penalties",
+        "verbatim_text": "From the University’s advice for students regarding Turnitin and AI writing detection:\n\"The acceptable use of AI will vary across disciplines, subjects, and assessment tasks...\n...If an assessment task does permit the use of AI tools and technologies in the preparation of the submission, this usage must be appropriately acknowledged and cited.\"\nAnd from the University's academic integrity guidance:\n\"Using artificial intelligence software such as ChatGPT or QuillBot to generate material for assessment and representing this as your own ideas, research or analysis is not submitting your own work.\nKnowingly submitting work for assessment that has been produced by a third party, including artificial intelligence technologies, is deliberate cheating and is academic misconduct.Any use of artificial intelligence technologies to generate material used to prepare for assessment submission must be appropriately acknowledged in accordance with the Assessments and Results Policy (MPF1326).\"",
+        "ctrl_f_phrase": "Knowingly submitting work for assessment that has been produced by a third party"
+      }
+    ]
+  },
+  {
+    "university": "Technical University of Munich (TU Munich / TUM)",
+    "country": "Germany",
+    "policy_found": true,
+    "policy_scope": "statement-only",
+    "policy_url": "https://www.tum.de/aktuelles/alle-meldungen/pressemitteilungen/details/tum-beschliesst-umfassende-ki-strategie",
+    "policy_title": "Künstliche Intelligenz in der Universitätsentwicklung – TUM beschließt umfassende KI-Strategie",
+    "policy_last_updated": "2026-03-18",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "Präsident Prof. Thomas F. Hofmann betont: „Mit dieser ersten TUM KI Strategie bieten wir einen wertvollen Rahmen für die Nutzung von KI-Technologien.\nWir wollen die Mitglieder unserer Hochschulgemeinschaft ermutigen, KI-Werkzeuge verantwortungsvoll zu nutzen, um unsere spezifischen institutionellen Anforderungen in allen Bereichen der TUM effektiver und effizienter zu erfüllen und Innovationen in der Hochschulbildung zu fördern.\nGleichzeitig unternehmen wir große Anstrengungen, ethische Standards, Transparenz, Fairness und Datenschutz zu sichern und potenzielle Risiken zu minimieren.“",
+        "ctrl_f_phrase": "wir wollen die Mitglieder unserer Hochschulgemeinschaft ermutigen"
+      },
+      {
+        "topic_hint": "student_training",
+        "verbatim_text": "Ein besonderes Augenmerk liegt auf der Aus- und Weiterbildung unserer Studierenden, Forschenden und Mitarbeitenden im Umgang mit dieser neuen Technologie.“\nDie TUM KI Strategie skizziert die Pläne zur Implementierung von KI-Technologien in fünf zentralen Handlungsfeldern:\n- **Integration in den Lehrplan:** KI wird sukzessive in akademische Programme und außercurriculare Angebote integriert.\nStudierende sollen wesentliche Kompetenzen in Bereichen wie Datenanalyse, maschinelles Lernen und Algorithmenentwicklung erwerben.\nFür Dozierende und Mitarbeitende werden zusätzliche Angebote geschaffen.",
+        "ctrl_f_phrase": "Ein besonderes Augenmerk liegt auf der Aus- und Weiterbildung"
+      }
+    ]
+  }
+]

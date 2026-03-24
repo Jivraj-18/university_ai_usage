@@ -1,0 +1,218 @@
+[
+    {
+        "university": "Indian Institute of Technology Delhi",
+        "country": "India",
+        "policy_found": true,
+        "policy_url": "https://www.thehindu.com/education/colleges/iit-delhi-sets-new-rules-for-genai-tool-usage-by-students-and-faculty/article69632486.ece",
+        "policy_title": "Guidelines on Responsible Use of Generative AI Tools",
+        "policy_last_updated": "29.05.2025",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "Indian Institute of Technology Madras",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "Institutional-level student usage policy text was not retrieved; found documents focus on in-person invigilated assessments to mitigate AI misuse and the launch of the 'Bodhan AI Foundation' for research.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "Indian Institute of Science Bangalore",
+        "country": "India",
+        "policy_found": true,
+        "policy_url": "https://iisc.ac.in/wp-content/uploads/2025/12/UG-HandBook-25-26-19.12.2025..pdf",
+        "policy_title": "Undergraduate Handbook 2025-26: Conduct Rules and Code of Ethics",
+        "policy_last_updated": "19.12.2025",
+        "is_pdf": true,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "Indian Institute of Management Ahmedabad",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "Publicly available text details a partnership with OpenAI for 'ChatGPT Edu' and curriculum integration in the 'Blended MBA', but specific verbatim policy text for students is not found in search.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "Delhi University",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "No university-wide student AI policy text found; search results indicate faculty training on 'Cybersecurity and Digital Hygiene' and attendance at the India AI Impact Summit.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "Jadavpur University",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "Verification of official sites did not yield institution-wide AI usage rules; search results center on research projects and NBA accreditation status for 2026.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "BITS Pilani",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "Official verbatim policy text not found; public records only include statements by the Vice-Chancellor that using AI-generated content without understanding amounts to 'academic malpractice'.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "Manipal Institute of Technology",
+        "country": "India",
+        "policy_found": true,
+        "policy_url": "https://www.manipal.edu/mu/news-events/mahe-introduces--magic--to-power-ai-driven-academic-and-administ.html",
+        "policy_title": "MAHE Agentic Intelligent Console (MAGIC) Launch Policy",
+        "policy_last_updated": "20.03.2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": [
+            {
+                "topic_hint": "approved tools",
+                "verbatim_text": "MAHE will implement AI-powered tools and resources across its academic programs to support personalised learning, boost critical thinking, and encourage ethical AI use. MAGIC is designed to introduce intelligent AI agents across critical university functions.",
+                "ctrl_f_phrase": "encourage ethical AI use. MAGIC is"
+            }
+        ]
+    },
+    {
+        "university": "Ashoka University",
+        "country": "India",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "No university-level student policy found; snippets identify the 'AI@Ashoka' research initiative and workshops on 'quantitative research' but no restrictive usage codes.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "MIT",
+        "country": "USA",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "The 'Committee on AI Use' was launched in January 2026 to propose a policy; currently, the institution provides an 'AI Sandbox' for secure interaction but lacks a formal institution-wide usage code in public search.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "Stanford University",
+        "country": "USA",
+        "policy_found": true,
+        "policy_url": "https://med.stanford.edu/md/mdhandbook/section-3-md-requirements-procedures/3-32--generative-artificial-intelligence--ai--policy.html",
+        "policy_title": "Section 3.32: Generative Artificial Intelligence (AI) Policy",
+        "policy_last_updated": "August 2025",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "Harvard University",
+        "country": "USA",
+        "policy_found": true,
+        "policy_url": "https://registrar.gse.harvard.edu/learning/policies-forms/ai-policy",
+        "policy_title": "HGSE Academic Integrity Policy: Generative AI Usage",
+        "policy_last_updated": "2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "University of Oxford",
+        "country": "UK",
+        "policy_found": true,
+        "policy_url": "https://governance.admin.ox.ac.uk/education-committee/policies/ai-use-in-summative-assessment",
+        "policy_title": "Policy on AI use in summative assessment",
+        "policy_last_updated": "27.10.2025",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "University of Cambridge",
+        "country": "UK",
+        "policy_found": true,
+        "policy_url": "https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct/artificial-intelligence-ai",
+        "policy_title": "Artificial Intelligence (AI)",
+        "policy_last_updated": "2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "ETH Zurich",
+        "country": "Switzerland",
+        "policy_found": true,
+        "policy_url": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education.html",
+        "policy_title": "AI in Teaching and Learning",
+        "policy_last_updated": "2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": "The use of generative AI as a tool and its source declarations has been agreed with the supervisor.",
+        "ctrl_f_phrase": "declarations of originality were adapted to"
+    },
+    {
+        "university": "National University of Singapore",
+        "country": "Singapore",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "Verbatim institution-wide policy document text for students was not found; central resources discuss curriculum 'revamps' and 'redesigning assessments' in general terms, while restrictive rules are maintained at the department level.",
+        "raw_excerpts": null
+    },
+    {
+        "university": "University of Toronto",
+        "country": "Canada",
+        "policy_found": true,
+        "policy_url": "https://ot.utoronto.ca/university-sgs-policies",
+        "policy_title": "School of Graduate Studies' Calendar Section 11.6: Code of Behaviour on Academic Matters",
+        "policy_last_updated": "2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "University of Melbourne",
+        "country": "Australia",
+        "policy_found": true,
+        "policy_url": "https://fbe.unimelb.edu.au/__data/assets/word_doc/0005/5428400/FBE-Subject-Guide-Template-Summer-2026-Only.docx",
+        "policy_title": "University Policy Statement – The Use of GenAI",
+        "policy_last_updated": "March 2026",
+        "is_pdf": false,
+        "no_policy_reason": null,
+        "raw_excerpts": null
+    },
+    {
+        "university": "TU Munich",
+        "country": "Germany",
+        "policy_found": false,
+        "policy_url": null,
+        "policy_title": null,
+        "policy_last_updated": null,
+        "is_pdf": false,
+        "no_policy_reason": "No university-wide student usage policy found; snippets focus on teaching platforms (Artemis) that provide AI-driven templates for programming assignments.",
+        "raw_excerpts": null
+    }
+]

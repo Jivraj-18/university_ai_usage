@@ -1,0 +1,473 @@
+[
+  {
+    "university": "Indian Institute of Technology Bombay",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide policy on generative AI use in student academic work found on iitb.ac.in. Search returned only AI course offerings and research programs, not academic integrity or student AI use guidelines.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Indian Institute of Technology Delhi",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide AI policy for student academic work found on iitd.ac.in. One course-level page (ML course) was found prohibiting ChatGPT use for code, but this is department-level, not institution-wide.",
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework / assignments (course-level only, not institution-wide)",
+        "verbatim_text": "Please note that the use of large language models such as ChatGPT to generate code, is not allowed. Taking and using code from the Internet is also not allowed.",
+        "ctrl_f_phrase": "use of large language models such as ChatGPT"
+      }
+    ]
+  },
+  {
+    "university": "Indian Institute of Technology Madras",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI academic integrity policy found on iitm.ac.in. No results for student AI use guidelines.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Indian Institute of Science Bangalore",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on iisc.ac.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Indian Institute of Management Ahmedabad",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on iima.ac.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Delhi University",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on du.ac.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Jadavpur University",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on jaduniv.edu.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "BITS Pilani",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on bits-pilani.ac.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Manipal Institute of Technology",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on manipal.edu.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Ashoka University",
+    "country": "India",
+    "policy_found": false,
+    "policy_url": null,
+    "policy_title": null,
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": "No institution-wide generative AI policy for student academic work found on ashoka.edu.in.",
+    "raw_excerpts": []
+  },
+  {
+    "university": "Massachusetts Institute of Technology",
+    "country": "USA",
+    "policy_found": true,
+    "policy_url": "https://ist.mit.edu/ai-guidance",
+    "policy_title": "Guidance for use of Generative AI tools | Information Systems & Technology",
+    "policy_last_updated": "2/19/2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general guidance / scope",
+        "verbatim_text": "Information Systems and Technology (IS&T) is providing this initial guidance to encourage community members to consider factors including information security, data privacy, regulatory and policy compliance, compliance with confidentiality restrictions concerning third party information and data, intellectual property (e.g., copyright and patent), and academic integrity when choosing to use or purchase software that makes use of generative artificial intelligence (AI).",
+        "ctrl_f_phrase": "regulatory and policy compliance, compliance with confidentiality"
+      },
+      {
+        "topic_hint": "data / confidential information",
+        "verbatim_text": "No Generative AI tools, including those licensed by IS&T, are approved for use with High Risk MIT information. Additionally, we do not recommend using publicly available GenAI tools not subject to an Institute licensing agreement for your MIT research and educational activities, including with Low Risk or Medium Risk information.",
+        "ctrl_f_phrase": "not approved for use with High Risk MIT"
+      },
+      {
+        "topic_hint": "accuracy / disclosure",
+        "verbatim_text": "Be aware that information generated by AI may be inaccurate, incomplete, misleading, biased, fabricated, or may contain material subject to a third party's intellectual property ownership. You are responsible for the accuracy of any information you publish, including AI-generated content.",
+        "ctrl_f_phrase": "inaccurate, incomplete, misleading, biased, fabricated"
+      },
+      {
+        "topic_hint": "disclosure / transparency",
+        "verbatim_text": "You should disclose the use of generative AI tools for all academic, educational, and research-related uses. Do not publish research results that rely on content generated through the use of a generative AI tool without disclosing the nature of the use of such generative AI tool in producing the content.",
+        "ctrl_f_phrase": "disclose the use of generative AI tools for all academic"
+      },
+      {
+        "topic_hint": "faculty discretion (MIT Sloan)",
+        "verbatim_text": "MIT Sloan does not have a definitive policy on using generative AI tools (e.g., ChatGPT) to complete individual or team assignments or prepare for a class discussion. Rather, faculty will set their own policies pertaining to the use of AI tools in their courses, including permitting or prohibiting some or all uses of such tools. Faculty will clearly communicate their policies on generative AI usage (e.g., through their course syllabi).",
+        "ctrl_f_phrase": "faculty will set their own policies pertaining to the use"
+      }
+    ]
+  },
+  {
+    "university": "Stanford University",
+    "country": "USA",
+    "policy_found": true,
+    "policy_url": "https://communitystandards.stanford.edu/generative-ai-policy-guidance",
+    "policy_title": "Generative AI Policy Guidance | Office of Community Standards",
+    "policy_last_updated": "February 16, 2023",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general default / assignments / exams",
+        "verbatim_text": "Absent a clear statement from a course instructor, use of or consultation with generative AI shall be treated analogously to assistance from another person. In particular, using generative AI tools to substantially complete an assignment or exam (e.g. by entering exam or assignment questions) is not permitted. Students should acknowledge the use of generative AI (other than incidental use) and default to disclosing such assistance when in doubt.",
+        "ctrl_f_phrase": "treated analogously to assistance from another person"
+      },
+      {
+        "topic_hint": "faculty discretion",
+        "verbatim_text": "Individual course instructors are free to set their own policies regulating the use of generative AI tools in their courses, including allowing or disallowing some or all uses of such tools. Course instructors should set such policies in their course syllabi and clearly communicate such policies to students. Students who are unsure of policies regarding generative AI tools are encouraged to ask their instructors for clarification.",
+        "ctrl_f_phrase": "free to set their own policies regulating the use"
+      },
+      {
+        "topic_hint": "AI detection tools",
+        "verbatim_text": "NOTE: As part of the BCA's guidance on clear communication of a course's generative AI policy, OCS recommends course instructors provide clear advance notice that they may use detection software to review work submitted for use of generative AI.",
+        "ctrl_f_phrase": "provide clear advance notice that they may use detection software"
+      },
+      {
+        "topic_hint": "image / audio / video generation (scope)",
+        "verbatim_text": "The Board on Conduct Affairs (BCA) has been asked to address the Honor Code implications of generative AI tools such as ChatGPT, Bard, DALL-E, and Stable Diffusion.",
+        "ctrl_f_phrase": "Honor Code implications of generative AI tools such as ChatGPT, Bard, DALL-E"
+      }
+    ]
+  },
+  {
+    "university": "Harvard University",
+    "country": "USA",
+    "policy_found": true,
+    "policy_url": "https://provost.harvard.edu/guidelines-using-chatgpt-and-other-generative-ai-tools-harvard",
+    "policy_title": "Guidelines for Using ChatGPT and other Generative AI Tools at Harvard | Office of the Provost",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general guidance / data protection",
+        "verbatim_text": "The University supports responsible experimentation with generative AI tools, but there are important considerations to keep in mind when using these tools, including information security and data privacy, compliance, copyright, and academic integrity.",
+        "ctrl_f_phrase": "responsible experimentation with generative AI tools"
+      },
+      {
+        "topic_hint": "confidential data",
+        "verbatim_text": "You should not enter data classified as confidential (Level 2 and above), including non-public research data, into publicly-available generative AI tools, in accordance with the University's Information Security Policy. Information shared with generative AI tools using default settings is not private and could expose proprietary or sensitive information to unauthorized parties.",
+        "ctrl_f_phrase": "not enter data classified as confidential (Level 2"
+      },
+      {
+        "topic_hint": "accuracy / student responsibility",
+        "verbatim_text": "You are responsible for any content that you produce or publish that includes AI-generated material: AI-generated content can be inaccurate, misleading, or entirely fabricated (sometimes called \"hallucinations\"), or may contain copyrighted material. Review your AI-generated content before publication.",
+        "ctrl_f_phrase": "AI-generated content can be inaccurate, misleading, or entirely fabricated"
+      },
+      {
+        "topic_hint": "faculty discretion / academic integrity",
+        "verbatim_text": "Adhere to current policies on academic integrity: Review your School's student and faculty handbooks and policies. We expect that Schools will be developing and updating their policies as we better understand the implications of using generative AI tools. In the meantime, faculty should be clear with students they're teaching and advising about their policies on permitted uses, if any, of generative AI in classes and on academic work.",
+        "ctrl_f_phrase": "faculty should be clear with students they're teaching"
+      },
+      {
+        "topic_hint": "homework / assignments (HGSE school-level policy)",
+        "verbatim_text": "Unless otherwise specified by your instructor, it is a violation of the HGSE Academic Integrity Policy to use generative AI to create all or part of an assignment for a course (e.g., a paper, memo, presentation, or short response) and submit it as your own.",
+        "ctrl_f_phrase": "violation of the HGSE Academic Integrity Policy to use generative AI"
+      },
+      {
+        "topic_hint": "disclosure / citation (HGSE)",
+        "verbatim_text": "For any permitted use of GenAI tools, you must acknowledge and document that use in your assignment submission by explaining what tool(s) you used, prompts you provided (if applicable), and how you integrated the output into your work. If you cite directly from the tool, use proper citation format to credit the source.",
+        "ctrl_f_phrase": "acknowledge and document that use in your assignment submission"
+      }
+    ]
+  },
+  {
+    "university": "University of Oxford",
+    "country": "UK",
+    "policy_found": true,
+    "policy_url": "https://www.ox.ac.uk/students/life/it/guidance-safe-and-responsible-use-gen-ai-tools",
+    "policy_title": "Guidance on safe and responsible use of Gen AI tools | University of Oxford",
+    "policy_last_updated": "22 September 2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "assessment / exams",
+        "verbatim_text": "For each specific assessment you will be given prior written notice of whether or not the use of AI is permitted. You are fully responsible for the accuracy, originality, and quality of work you submit for assessment, and you must follow the rules on AI use for each specific assessment you are taking. You must make a formal declaration of any permitted AI-use in the format prescribed by your assessment setter.",
+        "ctrl_f_phrase": "prior written notice of whether or not the use of AI is permitted"
+      },
+      {
+        "topic_hint": "penalties / misconduct",
+        "verbatim_text": "Any unauthorised use of AI in work submitted for assessment constitutes cheating and plagiarism under University rules, penalties for which include failing the relevant assessment and, in appropriate cases, expulsion. Any use of AI in work submitted for assessment is unauthorised unless you are specifically told differently in writing, in advance of the assessment, in instructions from your faculty's or department for the specific assessment in question.",
+        "ctrl_f_phrase": "penalties for which include failing the relevant assessment and, in appropriate cases, expulsion"
+      },
+      {
+        "topic_hint": "research / thesis",
+        "verbatim_text": "All research undertaken by academic staff and students, including by postgraduate students, must meet the expectations in the Policy for using Generative AI in Research: guidelines for researchers and professional staff. Substantive use of GenAI should be declared whenever a stand-alone AI tool is used (such as ChatGPT Edu), but not where GenAI functionality is embedded within existing software.",
+        "ctrl_f_phrase": "Substantive use of GenAI should be declared whenever a stand-alone AI tool"
+      },
+      {
+        "topic_hint": "institutionally provided AI tools",
+        "verbatim_text": "You may make use of University-supported generative AI tools (e.g. ChatGPT Edu, Google Gemini, Notebook LM and Copilot Chat) to develop your academic skills and to support your studies. This should be done in consultation with your tutors, faculty, or department, and you should always follow their advice in relation to how they expect AI tools to be used (or not used) for different tasks.",
+        "ctrl_f_phrase": "ChatGPT Edu, Google Gemini, Notebook LM and Copilot Chat"
+      },
+      {
+        "topic_hint": "student training",
+        "verbatim_text": "Free training is available across the University and Colleges, for all students and staff, from the start of Michaelmas term 2025.",
+        "ctrl_f_phrase": "Free training is available across the University and Colleges"
+      }
+    ]
+  },
+  {
+    "university": "University of Cambridge",
+    "country": "UK",
+    "policy_found": true,
+    "policy_url": "https://www.educationalpolicy.admin.cam.ac.uk/plagiarism-and-academic-misconduct/artificial-intelligence-ai",
+    "policy_title": "Artificial Intelligence (AI) | Education Quality and Policy Office",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "homework / study / formative work",
+        "verbatim_text": "Students are permitted to make appropriate use of artificial intelligence tools to support their personal study, research and formative work. Where doing so, it is recommended that you discuss this with your supervisor or lecturer to understand how best to engage with these tools whilst still benefiting from the educational experience as intended.",
+        "ctrl_f_phrase": "permitted to make appropriate use of artificial intelligence tools"
+      },
+      {
+        "topic_hint": "summative assessment / academic misconduct",
+        "verbatim_text": "A student using any unacknowledged content generated by artificial intelligence within a summative assessment as though it is their own work constitutes academic misconduct, unless explicitly stated otherwise in the assessment brief.",
+        "ctrl_f_phrase": "unacknowledged content generated by artificial intelligence within a summative assessment"
+      },
+      {
+        "topic_hint": "AI detection tools",
+        "verbatim_text": "Not relying on AI detection software as it is not proven to be accurate or reliable and provides no evidence to support investigations into the use of GenAI.",
+        "ctrl_f_phrase": "AI detection software as it is not proven to be accurate"
+      },
+      {
+        "topic_hint": "examiners / student work handling",
+        "verbatim_text": "Examiners across all programmes of study (including Undergraduate, Postgraduate Taught, and Postgraduate Research) are not permitted to upload, copy, or share student work with Generative AI (GenAI) tools and Large Language Models (LLMs). Examiners may not use tools, such as ChatGPT, Perplexity, Google Bard, or Microsoft Copilot, to analyse work submitted by students and provide written feedback.",
+        "ctrl_f_phrase": "not permitted to upload, copy, or share student work with Generative AI"
+      }
+    ]
+  },
+  {
+    "university": "ETH Zurich",
+    "country": "Switzerland",
+    "policy_found": true,
+    "policy_url": "https://ethz.ch/en/the-eth-zurich/education/ai-in-education/academic-integrity.html",
+    "policy_title": "Academic Integrity | ETH Zurich",
+    "policy_last_updated": "December 2024",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general principles / transparency",
+        "verbatim_text": "The creator of content is always responsible for its correctness and quality. This principle continues to apply and relates to course materials and documents, but also, for example, to learning records and academic papers. In view of the existence of generative AI, it is all the more important to fulfil this responsibility at all times and to set an example for others.",
+        "ctrl_f_phrase": "creator of content is always responsible for its correctness and quality"
+      },
+      {
+        "topic_hint": "disclosure",
+        "verbatim_text": "Be explicit about which content or parts of materials and work have been created with the help of generative AI. Create transparency regarding the use of AI-based tools in lessons. Discuss the use of GenAI for feedback and assessment openly.",
+        "ctrl_f_phrase": "Be explicit about which content or parts of materials"
+      },
+      {
+        "topic_hint": "penalties / violations",
+        "verbatim_text": "If AI tools are used contrary to the lecturer's instructions, the existing processes continue to apply. Violations such as the use of unauthorised tools or failure to disclose their use will be subject to disciplinary action.",
+        "ctrl_f_phrase": "failure to disclose their use will be subject to disciplinary action"
+      },
+      {
+        "topic_hint": "thesis / declaration of originality",
+        "verbatim_text": "ETH Zurich's declarations of originality were adapted to include a passage on the use of artificial intelligence. These now include two options with the following focus on the use of generative artificial intelligence: Generative AI technologies were not used. The use of generative AI as a tool and its source declarations has been agreed with the supervisor.",
+        "ctrl_f_phrase": "declarations of originality were adapted to include a passage"
+      },
+      {
+        "topic_hint": "AI detection tools",
+        "verbatim_text": "Technical recognition of output generated using generative AI is currently unreliable and will probably remain so in the future. Trust in such a method is therefore not appropriate.",
+        "ctrl_f_phrase": "recognition of output generated using generative AI is currently unreliable"
+      },
+      {
+        "topic_hint": "faculty discretion",
+        "verbatim_text": "Lecturers are encouraged to establish rules and guidelines regarding the use of generative artificial intelligence for assignments, projects and assessments in their courses. There are no universally applicable solutions, so clear communication between lecturers and students is all the more important.",
+        "ctrl_f_phrase": "no universally applicable solutions, so clear communication between lecturers"
+      }
+    ]
+  },
+  {
+    "university": "National University of Singapore",
+    "country": "Singapore",
+    "policy_found": true,
+    "policy_url": "https://ctlt.nus.edu.sg/wp-content/uploads/2024/08/Policy-for-Use-of-AI-in-Teaching-and-Learning.pdf",
+    "policy_title": "Policy for Use of AI in Teaching and Learning",
+    "policy_last_updated": "August 2024",
+    "is_pdf": true,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "plagiarism / attribution",
+        "verbatim_text": "Generating an output and presenting it as your own work or idea without attribution. Note that students do not have to paraphrase AI output where its use is permitted. In such cases, so long as they acknowledge the use of AI, they have not committed plagiarism, and they will not be penalized for declaring its use. The assignment will be marked based solely on the quality of the submission.",
+        "ctrl_f_phrase": "not have to paraphrase AI output where its use is permitted"
+      },
+      {
+        "topic_hint": "student responsibility",
+        "verbatim_text": "Always remember that you, rather than the AI tool, are responsible for the quality and integrity of the work you submit. AI tools are tools, and as such, cannot take responsibility for any information or text that they produce.",
+        "ctrl_f_phrase": "you, rather than the AI tool, are responsible for the quality"
+      },
+      {
+        "topic_hint": "exams / on-site assessment",
+        "verbatim_text": "if there is a need to test whether you possess a certain knowledge or capability without access to AI tools or other resources, your instructors will continue to arrange for appropriate assessment settings (e.g., an on-site proctored exam or oral interview).",
+        "ctrl_f_phrase": "on-site proctored exam or oral interview"
+      },
+      {
+        "topic_hint": "institutional tools",
+        "verbatim_text": "Wherever NUS data is involved, use NUS approved AI tools.",
+        "ctrl_f_phrase": "NUS data is involved, use NUS approved AI tools"
+      }
+    ]
+  },
+  {
+    "university": "University of Toronto",
+    "country": "Canada",
+    "policy_found": true,
+    "policy_url": "https://www.utm.utoronto.ca/academic-integrity/students/generative-ai",
+    "policy_title": "Generative AI and Academic Integrity | Academic Integrity",
+    "policy_last_updated": null,
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "general default rule",
+        "verbatim_text": "The University of Toronto takes the stance that students are not allowed to use generative AI in a course unless the instructor explicitly permits it. Instructors design their assessments to help students develop important skills for subsequent courses and for your future career, so unauthorized use of aids like generative AI can hinder your learning.",
+        "ctrl_f_phrase": "not allowed to use generative AI in a course unless the instructor explicitly permits"
+      },
+      {
+        "topic_hint": "penalties / academic offence",
+        "verbatim_text": "Use of generative AI tools when not permitted is considered an academic offence and can result in an allegation of academic misconduct being raised by your instructor.",
+        "ctrl_f_phrase": "considered an academic offence and can result in an allegation"
+      },
+      {
+        "topic_hint": "thesis / graduate work",
+        "verbatim_text": "The use of generative AI tools in any aspect of researching or writing of the thesis must be done with the prior approval of the supervisor(s) and supervisory committee. Careful attention must be paid in the thesis to appropriately citing and describing any use of generative AI tools in the research process. It must be clear to the reader which generative AI tools were used, as well as how and why they were used.",
+        "ctrl_f_phrase": "must be done with the prior approval of the supervisor(s) and supervisory committee"
+      },
+      {
+        "topic_hint": "AI detection tools",
+        "verbatim_text": "U of T does not support the use of AI-detection tools.",
+        "ctrl_f_phrase": "U of T does not support the use of AI-detection tools"
+      },
+      {
+        "topic_hint": "data privacy",
+        "verbatim_text": "Do not input any private, confidential or identifying information into generative AI. For many of these systems, the text you put in is retained and used to further train the AI.",
+        "ctrl_f_phrase": "text you put in is retained and used to further train the AI"
+      }
+    ]
+  },
+  {
+    "university": "University of Melbourne",
+    "country": "Australia",
+    "policy_found": true,
+    "policy_url": "https://academicintegrity.unimelb.edu.au/staff-resources/artificial-intelligence/university-policy-and-actions",
+    "policy_title": "University policy and actions - Academic integrity | University of Melbourne",
+    "policy_last_updated": "March 18, 2024",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "disclosure / citation",
+        "verbatim_text": "This does not prevent students from using these tools but if a student does use AI generated material in the preparation of their assessment submission, this must be appropriately acknowledged and cited in accordance with the Assessment and Results Policy (MPF1326).",
+        "ctrl_f_phrase": "appropriately acknowledged and cited in accordance with the Assessment and Results Policy"
+      },
+      {
+        "topic_hint": "student training / onboarding",
+        "verbatim_text": "As of Semester 1, 2024 all commencing coursework students are asked to complete academic integrity education modules which include guidance on the appropriate use of generative AI.",
+        "ctrl_f_phrase": "complete academic integrity education modules which include guidance on the appropriate use"
+      },
+      {
+        "topic_hint": "AI detection tools",
+        "verbatim_text": "As of April 2023, the University has been using Turnitin's AI detector tool. The tool aims to identify passages potentially generated by AI by looking for highly predictable language patterns.",
+        "ctrl_f_phrase": "University has been using Turnitin's AI detector tool"
+      },
+      {
+        "topic_hint": "image / audio / video generation (scope)",
+        "verbatim_text": "AI tools can now handle a wide range of input and output formats, including text, graphics, audio and video. Real-time translation, intercepting of video feeds and creation of deep-fake avatars are all available in tools purpose-built as cheating technologies for students and other users.",
+        "ctrl_f_phrase": "including text, graphics, audio and video. Real-time translation, intercepting of video feeds"
+      },
+      {
+        "topic_hint": "faculty discretion / subject rules",
+        "verbatim_text": "Your subject coordinator will set the rules on whether AI tools are permitted, and some uses may be restricted depending on the subject and its learning outcomes. Always check the guidelines for each assessment to be sure you're using GenAI tools appropriately.",
+        "ctrl_f_phrase": "subject coordinator will set the rules on whether AI tools are permitted"
+      }
+    ]
+  },
+  {
+    "university": "Technical University of Munich",
+    "country": "Germany",
+    "policy_found": true,
+    "policy_url": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/tum-issues-a-comprehensive-ai-strategy",
+    "policy_title": "TUM issues a comprehensive AI strategy",
+    "policy_last_updated": "February 12, 2025",
+    "is_pdf": false,
+    "no_policy_reason": null,
+    "raw_excerpts": [
+      {
+        "topic_hint": "institutional AI strategy / student training",
+        "verbatim_text": "Integration into the curriculum: AI will be successively integrated into academic programs and extracurricular offerings. Students will acquire essential skills in areas such as data analysis, machine learning, and algorithm development. Additional offerings will be created for lecturers and staff.",
+        "ctrl_f_phrase": "Students will acquire essential skills in areas such as data analysis"
+      },
+      {
+        "topic_hint": "institutionally approved tools",
+        "verbatim_text": "Various AI tools are already freely available to all members of TUM: The university has acquired licenses for Microsoft Copilot and Grammarly. In teaching, there are already several initiatives for AI-supported teaching, such as Artemis and tumtutor.",
+        "ctrl_f_phrase": "acquired licenses for Microsoft Copilot and Grammarly"
+      },
+      {
+        "topic_hint": "ethics / transparency",
+        "verbatim_text": "Ethics and transparency: Addressing ethical issues such as bias in AI algorithms, data protection, and the impact of AI on work processes plays a central role. The aim is to strengthen trust in AI systems and ensure transparency.",
+        "ctrl_f_phrase": "Addressing ethical issues such as bias in AI algorithms, data protection"
+      }
+    ]
+  }
+]
