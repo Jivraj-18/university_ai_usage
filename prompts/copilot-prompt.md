@@ -24,8 +24,9 @@ Produce a self-contained HTML file featuring:
     * **Detail Popups:** Clicking a cell opens a modal/popup displaying:
         * University name and Policy topic.
         * Classification and one-line reason.
-        * **Exact Quote** (verbatim from input).
-        * Source Link (using `:~:text=` fragments for direct navigation).
+        * **Multiple Exact Quotes** (up to 3 verbatim excerpts from input, each on separate lines).
+        * Source Links (using `:~:text=` fragments for direct navigation to each quote).
+
 
 **3. Validation Checklist:**
 * Ensure every non-blank cell has a supporting quote and URL.
