@@ -47,3 +47,9 @@
 20. IIT Madras, Essays, Written Assignments, Take-home Exams, In-class Exams/Quizzes, Coding/Programming, Lab Reports,	Thesis/Dissertation,	Research Papers,	Literature Reviews,	Paraphrasing/Summarizing,	Proofreading/Editing,	Translation,	Citation/Disclosure,	Brainstorming/Ideation, Fact-checking,	Outlining/Drafting policy referenced document is not a AI policy document from IIT Madras
 21. Jadavpur University, Coding/Programming, Research Papers, Proofreading/Editing, Citation/Disclosure,	Brainstorming/Ideation	 policy referenced document is not a AI policy document from IIT Madras
 22. Manipal Academy of Higher Education, Written Assignments, Research Papers, Citation/Disclosure, Brainstorming/Ideation,	Fact-checking Policy 
+
+
+## pending work 
+1. BITS pilani
+2. Ashoka University 
+3. Delhi University
